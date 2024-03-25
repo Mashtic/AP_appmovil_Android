@@ -11,13 +11,13 @@
 
 
     <FrameLayout
-        android:id="@+id/frame_logo"
+        android:id="@+id/frame_logo_MAINGP"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/img_logoTec"
+            android:id="@+id/img_logoTec_MAINGP"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/logotec2"
@@ -34,12 +34,12 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_MAINGP"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnCreacionDeProyectos"
+            android:id="@+id/btnCreacionDeProyectos_MAINGP"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -51,7 +51,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnConsultaDeProyectos"
+            android:id="@+id/btnConsultaDeProyectos_MAINGP"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="20dp"
@@ -62,7 +62,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnModificacionDeInformacion"
+            android:id="@+id/btnModificacionDeInformacion_MAINGP"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="20dp"
@@ -73,7 +73,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnCreacionDeReuniones"
+            android:id="@+id/btnCreacionDeReuniones_MAINGP"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="20dp"
@@ -84,7 +84,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnAtras"
+            android:id="@+id/btnAtras_MAINGP"
             android:layout_width="202dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -97,7 +97,4 @@
 
 
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

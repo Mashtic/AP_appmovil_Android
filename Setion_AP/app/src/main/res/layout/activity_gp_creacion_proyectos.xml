@@ -15,18 +15,18 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_GPCREACIONPROYECTOS"
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/frame_logo"
+            android:id="@+id/frame_logo_GPCREACIONPROYECTOS"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             tools:ignore="MissingConstraints"
             android:layout_marginBottom="30dp">
 
             <ImageView
-                android:id="@+id/img_logoTec"
+                android:id="@+id/img_logoTec_GPCREACIONPROYECTOS"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/logotec2"
@@ -45,7 +45,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edNombre"
+                android:id="@+id/edNombre_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Nombre"
@@ -60,7 +60,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edRecursosNecesarios"
+                android:id="@+id/edRecursosNecesarios_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Recursos necesarios"
@@ -75,7 +75,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edPresupuesto"
+                android:id="@+id/edPresupuesto_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Presupuesto"
@@ -90,7 +90,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <TextView
-                android:id="@+id/edColaboradores"
+                android:id="@+id/edColaboradores_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Colaboradores"
@@ -100,7 +100,7 @@
 
             <ImageView
                 android:layout_gravity="end"
-                android:id="@+id/imgLUPA"
+                android:id="@+id/imgLUPA_GPCREACIONPROYECTOS"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/lupa"
@@ -114,7 +114,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edEstadoDelProyecto"
+                android:id="@+id/edEstadoDelProyecto_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Estado del proyecto"
@@ -129,7 +129,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edDescripcion"
+                android:id="@+id/edDescripcion_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Descripción"
@@ -145,7 +145,7 @@
             app:cardCornerRadius="12dp">
 
             <EditText
-                android:id="@+id/edFechaDeInicio"
+                android:id="@+id/edFechaDeInicio_GPCREACIONPROYECTOS"
                 android:hint="Fecha de inicio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -161,7 +161,7 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edResponsable"
+                android:id="@+id/edResponsable_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Responsable"
@@ -177,14 +177,14 @@
             >
 
             <Button
-                android:id="@+id/btnAnadirTarea"
+                android:id="@+id/btnAnadirTarea_GPCREACIONPROYECTOS"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:backgroundTint="@color/btn_gray"
                 android:text="Añadir tarea" />
             <Button
-                android:id="@+id/btnHistorialDeCambios"
+                android:id="@+id/btnHistorialDeCambios_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Historial de cambios"
@@ -201,14 +201,14 @@
             >
 
             <Button
-                android:id="@+id/btnGuardar"
+                android:id="@+id/btnGuardar_GPCREACIONPROYECTOS"
                 android:layout_width="176dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="6dp"
                 android:backgroundTint="@color/btn_blue"
                 android:text="Guardar" />
             <Button
-                android:id="@+id/btnCancelar"
+                android:id="@+id/btnCancelar_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Cancelar"
