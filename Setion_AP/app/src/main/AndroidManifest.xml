@@ -13,7 +13,17 @@
         android:theme="@style/Theme.Setion_AP"
         tools:targetApi="31">
         <activity
-            android:name=".pantallas_gestionProyectos.GP_CreacionProyectos"
+            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.GP_HistorialDeCambios"
+            android:exported="false"
+            android:label="@string/title_activity_gp_historial_de_cambios" />
+        <activity
+            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
+            android:exported="false" />
+        <activity
+            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_AnadirColaborador"
             android:exported="false" />
         <activity
             android:name=".Main_GestionProyectos"
