@@ -1,76 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas_gestionProyectos.GP_CreacionProyectos">
+    tools:context=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
+    android:background="@color/screen_background">
 
-    <FrameLayout
-        android:id="@+id/frame_logo"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/img_logoTec"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/logotec2"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            >
-
-        </ImageView>
-
-    </FrameLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frame_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
-
-        <EditText
-            android:id="@+id/editTextText"
+        <FrameLayout
+            android:id="@+id/frame_logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:layout_height="90dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="30dp">
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            <ImageView
+                android:id="@+id/img_logoTec"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logotec2"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                >
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            </ImageView>
 
-        <EditText
-            android:id="@+id/editTextText"
+        </FrameLayout>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edNombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nombre"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edRecursosNecesarios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Recursos necesarios"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edPresupuesto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Presupuesto"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <TextView
+                android:id="@+id/edColaboradores"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Colaboradores"
+                android:textSize="18dp"
+                android:background="@drawable/style_border_edittext">
+            </TextView>
+
+            <ImageView
+                android:layout_gravity="end"
+                android:id="@+id/imgLUPA"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/lupa"
+                android:layout_marginEnd="10dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edEstadoDelProyecto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Estado del proyecto"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Descripción"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+
+            <EditText
+                android:id="@+id/edFechaDeInicio"
+                android:hint="Fecha de inicio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="date"
+                android:background="@drawable/style_border_edittext"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edResponsable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Responsable"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            >
+
+            <Button
+                android:id="@+id/btnAnadirTarea"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_gray"
+                android:text="Añadir tarea" />
+            <Button
+                android:id="@+id/btnHistorialDeCambios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Historial de cambios"
+                android:backgroundTint="@color/btn_gray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Guardar" />
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Cancelar"
+                android:backgroundTint="@color/btn_blue"/>
+        </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

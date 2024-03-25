@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.pantallas_gestionProyectos.GP_CreacionProyectos
+import com.example.setion_ap.pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
 
 class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnCreacionDeProyectos:Button
