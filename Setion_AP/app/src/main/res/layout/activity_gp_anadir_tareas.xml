@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:padding="12dp"
+    tools:context=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_AnadirTareas">
+
+
+    <!--LOGO TEC-->
+    <FrameLayout
+        android:id="@+id/frame_logo_GPANADIRTAREAS"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec_GPANADIRTAREAS"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logotec2"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_GPANADIRTAREAS">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Añadir tareas"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <!--            NOMBRE-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="15dp"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="12dp">
+
+                <EditText
+                    android:id="@+id/edNombre_GPANADIRTAREAS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/style_border_edittext"
+                    android:hint="Nombre">
+
+                </EditText>
+            </androidx.cardview.widget.CardView>
+
+            <!--            DESCRIPCION-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="15dp"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="12dp">
+
+                <EditText
+                    android:id="@+id/edDescripcion_GPANADIRTAREAS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/style_border_edittext"
+                    android:hint="Descripción">
+
+                </EditText>
+            </androidx.cardview.widget.CardView>
+
+            <!--            DESCRIPCION-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="15dp"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="12dp">
+
+                <EditText
+                    android:id="@+id/edStoryPoints_GPANADIRTAREAS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/style_border_edittext"
+                    android:hint="Story points">
+
+                </EditText>
+            </androidx.cardview.widget.CardView>
+
+            <FrameLayout
+                android:id="@+id/frameAnadirTareas_GPANADIRTAREAS"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <Button
+                    android:id="@+id/btnAnadir_GPANADIRTAREAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/btn_gray"
+                    android:text="Añadir">
+
+                </Button>
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Lista de tareas añadidas"
+                android:textSize="15dp" />
+
+            <!--            ESPACIO PARA LISTA DE TAREAS AÑADIDAS-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BDBABA"
+                android:layout_marginHorizontal="10dp">
+                <TextView
+
+                    android:id="@+id/tvTareasAñadidas_GPANADIRTAREAS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    android:text="Tareas aquí"/>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--BOTONES-->
+            <FrameLayout
+                android:id="@+id/frame_botones_GPANADIRTAREAS"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                tools:ignore="MissingConstraints">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnGuardar_GPANADIRTAREAS"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/btn_blue"
+                        android:text="Guardar" />
+
+                    <Button
+                        android:id="@+id/btnCancelar_GPANADIRTAREAS"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/btn_blue"
+                        android:text="Cancelar" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,11 +38,11 @@ class Main_GestionProyectos : AppCompatActivity() {
     }
 
     private fun initComponents() {
-        btnCreacionDeProyectos = findViewById<Button>(R.id.btnCreacionDeProyectos)
-        btnConsultaDeProyectos = findViewById<Button>(R.id.btnConsultaDeProyectos)
-        btnModificacionDeInformacion= findViewById<Button>(R.id.btnModificacionDeInformacion)
-        btnCreacionDeReuniones= findViewById<Button>(R.id.btnCreacionDeReuniones)
-        btnAtras = findViewById<Button>(R.id.btnAtras)
+        btnCreacionDeProyectos = findViewById<Button>(R.id.btnCreacionDeProyectos_MAINGP)
+        btnConsultaDeProyectos = findViewById<Button>(R.id.btnConsultaDeProyectos_MAINGP)
+        btnModificacionDeInformacion= findViewById<Button>(R.id.btnModificacionDeInformacion_MAINGP)
+        btnCreacionDeReuniones= findViewById<Button>(R.id.btnCreacionDeReuniones_MAINGP)
+        btnAtras = findViewById<Button>(R.id.btnAtras_MAINGP)
     }
 
     private fun fun_crecionDeProyectos() {
