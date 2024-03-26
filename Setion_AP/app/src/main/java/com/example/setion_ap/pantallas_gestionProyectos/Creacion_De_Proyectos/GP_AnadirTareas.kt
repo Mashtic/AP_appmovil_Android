@@ -60,7 +60,7 @@ class GP_AnadirTareas : AppCompatActivity() {
     }
 
     private fun fun_anadir() {
-        if (edNombre.text.isNotEmpty() || edNombre.text.isNotEmpty() || edNombre.text.isNotEmpty()){
+        if (edNombre.text.isNotEmpty() && edDescripcion.text.isNotEmpty() && edStoryPoints.text.isNotEmpty()){
             println("Estamos")
         }else{
             edNombre.setText("El espacio debe estar lleno")
