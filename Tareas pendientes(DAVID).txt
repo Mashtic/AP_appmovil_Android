@@ -1,4 +1,4 @@
-GENERAL
+GENERAL---
 -Conectar la base de datos a sql server
 
 
