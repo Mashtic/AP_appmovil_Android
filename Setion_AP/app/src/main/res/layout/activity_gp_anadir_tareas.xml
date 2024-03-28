@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/screen_background"
     android:padding="12dp"
-    tools:context=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_AnadirTareas">
+    tools:context=".APP.GestionProyectos.Creacion_De_Proyectos.GP_AnadirTareas">
 
 
     <!--LOGO TEC-->

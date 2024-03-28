@@ -1,4 +1,4 @@
-package com.example.setion_ap
+package com.example.setion_ap.APP
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,12 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.Evaluaciones.E_BurndownCharts
-import com.example.setion_ap.Evaluaciones.E_InformeGeneral
-import com.example.setion_ap.Evaluaciones.E_CreacionDeForos
-import com.example.setion_ap.pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
+import com.example.setion_ap.APP.Evaluaciones.E_BurndownCharts
+import com.example.setion_ap.APP.Evaluaciones.E_InformeGeneral
+import com.example.setion_ap.APP.Evaluaciones.E_CreacionDeForos
+import com.example.setion_ap.R
 
-class Evaluaciones_Main : AppCompatActivity() {
+class Main_Evaluaciones : AppCompatActivity() {
 
     private lateinit var btnInformeGeneral:Button
     private lateinit var btnBurndownChart:Button

@@ -1,4 +1,4 @@
-package com.example.setion_ap.Evaluaciones
+package com.example.setion_ap.APP.Evaluaciones
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.R
-import com.example.setion_ap.Evaluaciones.BurndownChart.E_BC_Proyecto
-import com.example.setion_ap.Evaluaciones_Main
+import com.example.setion_ap.APP.Evaluaciones.BurndownChart.E_BC_Proyecto
+import com.example.setion_ap.APP.Main_Evaluaciones
 
 class E_BurndownCharts : AppCompatActivity() {
 
@@ -48,7 +48,7 @@ class E_BurndownCharts : AppCompatActivity() {
         startActivity(intent)
     }
     private fun fun_atras() {
-        intent = Intent(this, Evaluaciones_Main::class.java)
+        intent = Intent(this, Main_Evaluaciones::class.java)
         startActivity(intent)
     }
 }

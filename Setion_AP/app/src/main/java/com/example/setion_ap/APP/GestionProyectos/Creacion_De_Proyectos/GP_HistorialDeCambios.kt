@@ -1,6 +1,5 @@
-package com.example.setion_ap.Evaluaciones.Foros
+package com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -9,28 +8,26 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.R
 
-class E_F_UsarForo_p2 : AppCompatActivity() {
-    private lateinit var btnAtras:Button
+class GP_HistorialDeCambios : AppCompatActivity() {
+    private lateinit var btnAceptar: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_ef_usar_foro_p2)
+        setContentView(R.layout.activity_gp_historial_de_cambios)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         initComponents()
         initListeners()
     }
-    private fun initComponents(){
-        btnAtras = findViewById<Button>(R.id.btnAtras_UF2)
+    private fun initComponents() {
+        btnAceptar = findViewById(R.id.btnAceptar_GPHISTORIALCAMBIOS)
     }
-    private fun initListeners(){
-        btnAtras.setOnClickListener { fun_atras() }
-    }
-    private fun fun_atras(){
-        intent = Intent(this,E_F_UsarForo_p1::class.java)
-        startActivity(intent)
+
+    private fun initListeners() {
+        btnAceptar.setOnClickListener{finish()}
     }
 }

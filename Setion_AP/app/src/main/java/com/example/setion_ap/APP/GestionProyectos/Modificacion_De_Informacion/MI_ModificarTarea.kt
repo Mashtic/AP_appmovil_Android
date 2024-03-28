@@ -1,21 +1,23 @@
-package com.example.setion_ap.Evaluaciones
+package com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.Evaluaciones_Main
 import com.example.setion_ap.R
 
-class E_InformeGeneral : AppCompatActivity() {
+class MI_ModificarTarea : AppCompatActivity() {
+    //BUTTONS
     private lateinit var btnAtras: Button
+    private lateinit var imgLupa: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_einforme_general)
+        setContentView(R.layout.activity_mi_modificar_tarea)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -25,19 +27,13 @@ class E_InformeGeneral : AppCompatActivity() {
         initListeners()
     }
 
-
-    private fun initComponents(){
-        btnAtras = findViewById<Button>(R.id.btnAtras_INFO)
-
-    }
-    private fun initListeners(){
-        btnAtras.setOnClickListener { fun_atras() }
-
+    private fun initComponents() {
+        btnAtras = findViewById(R.id.btnAtras_MIMODIFICARTAREAS)
+        imgLupa = findViewById(R.id.imgLUPA_MIMODIFICARTAREAS)
     }
 
-    private fun fun_atras(){
-        intent = Intent(this, Evaluaciones_Main::class.java)
-        startActivity(intent)
+    private fun initListeners() {
+        btnAtras.setOnClickListener{finish()}
+        imgLupa.setOnClickListener{}
     }
-
 }

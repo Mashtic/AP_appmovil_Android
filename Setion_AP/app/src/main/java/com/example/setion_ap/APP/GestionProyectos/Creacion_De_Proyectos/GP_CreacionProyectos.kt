@@ -1,9 +1,7 @@
-package com.example.setion_ap.pantallas_gestionProyectos.Creacion_De_Proyectos
+package com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,17 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.Main_GestionProyectos
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
-import java.sql.Date
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Locale
 

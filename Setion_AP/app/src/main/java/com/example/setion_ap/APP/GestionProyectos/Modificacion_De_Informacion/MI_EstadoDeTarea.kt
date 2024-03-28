@@ -1,25 +1,23 @@
-package com.example.setion_ap.Crear_Reunion
+package com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.R
 
-class CR_NuevaReunion : AppCompatActivity() {
-    //BUTTONS
+class MI_EstadoDeTarea : AppCompatActivity() {
     private lateinit var btnCancelar: Button
-    private lateinit var btnAgendar: Button
-    private lateinit var btnAnadir: Button
-    private lateinit var imgLupa: ImageView
+    private lateinit var btnPorHacer: Button
+    private lateinit var btnEnProgreso: Button
+    private lateinit var btnFinalizado: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cr_nueva_reunion)
+        setContentView(R.layout.activity_mi_estado_de_tarea)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -30,21 +28,16 @@ class CR_NuevaReunion : AppCompatActivity() {
     }
 
     private fun initComponents() {
-        btnCancelar = findViewById(R.id.btnCancelar_CRCREARREUNION)
-        btnAgendar = findViewById(R.id.btnAgendar_CRCREARREUNION)
-        btnAnadir = findViewById(R.id.btnAnadir_CRCREARREUNION)
-        imgLupa = findViewById(R.id.imgLUPA_CRCREARREUNION)
+        btnCancelar = findViewById(R.id.btnCancelarMIESTADOTAREAS)
+        btnPorHacer = findViewById(R.id.btnPorHacerMIESTADOTAREAS)
+        btnEnProgreso = findViewById(R.id.btnEnProgresoMIESTADOTAREAS)
+        btnFinalizado = findViewById(R.id.btnFinalizadoMIESTADOTAREAS)
     }
 
     private fun initListeners() {
         btnCancelar.setOnClickListener{finish()}
-        btnAgendar.setOnClickListener{finish()}
-        btnAnadir.setOnClickListener{fun_AnadirReunion()}
-        imgLupa.setOnClickListener{}
-    }
-
-    private fun fun_AnadirReunion() {
-        intent = Intent(this, CR_CorreoInvitacion::class.java)
-        startActivity(intent)
+        btnPorHacer.setOnClickListener{finish()}
+        btnEnProgreso.setOnClickListener{finish()}
+        btnFinalizado.setOnClickListener{finish()}
     }
 }

@@ -1,43 +1,42 @@
-package com.example.setion_ap.Crear_Reunion
+package com.example.setion_ap.APP.Evaluaciones.BurndownChart
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.setion_ap.APP.Main_Evaluaciones
 import com.example.setion_ap.R
 
-class CR_AnadirColaborador : AppCompatActivity() {
-    //BUTTONS
-    private lateinit var btnCancelar: Button
-    private lateinit var btnGuardar: Button
-    private lateinit var imgLupa: ImageView
-
+class E_BC_Proyecto : AppCompatActivity() {
+    private lateinit var btnAtras:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_cr_anadir_colaborador)
+        setContentView(R.layout.activity_ebc_proyecto)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         initComponents()
         initListeners()
     }
 
-    private fun initComponents() {
-        btnCancelar = findViewById(R.id.btnCancelar_CRANADIRCOLABORADOR)
-        btnGuardar = findViewById(R.id.btnGuardar_CRANADIRCOLABORADOR)
-        imgLupa = findViewById(R.id.imgLUPA_CRANADIRCOLABORADOR)
+
+    private fun initComponents(){
+        btnAtras = findViewById<Button>(R.id.btnAtras_P)
+
+    }
+    private fun initListeners(){
+        btnAtras.setOnClickListener { fun_atras() }
+
     }
 
-    private fun initListeners() {
-        btnCancelar.setOnClickListener{finish()}
-        btnGuardar.setOnClickListener{finish()}
-        imgLupa.setOnClickListener{}
+    private fun fun_atras(){
+        intent = Intent(this, Main_Evaluaciones::class.java)
+        startActivity(intent)
     }
 }

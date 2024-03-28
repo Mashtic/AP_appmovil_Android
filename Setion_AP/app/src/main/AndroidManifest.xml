@@ -16,46 +16,46 @@
         android:theme="@style/Theme.Setion_AP"
         tools:targetApi="31">
         <activity
-            android:name=".Evaluaciones.Foros.E_F_UsarForo_p2"
+            android:name=".APP.Evaluaciones.Foros.E_F_UsarForo_p2"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.Foros.E_F_CrearForo"
+            android:name=".APP.Evaluaciones.Foros.E_F_CrearForo"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.Foros.E_F_UsarForo_p1"
+            android:name=".APP.Evaluaciones.Foros.E_F_UsarForo_p1"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.BurndownChart.E_BC_Proyecto"
+            android:name=".APP.Evaluaciones.BurndownChart.E_BC_Proyecto"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.E_CreacionDeForos"
+            android:name=".APP.Evaluaciones.E_CreacionDeForos"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.E_BurndownCharts"
+            android:name=".APP.Evaluaciones.E_BurndownCharts"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones.E_InformeGeneral"
+            android:name=".APP.Evaluaciones.E_InformeGeneral"
             android:exported="false" />
         <activity
-            android:name=".Evaluaciones_Main"
+            android:name=".APP.Main_Evaluaciones"
             android:exported="false" />
         <activity
-            android:name=".Crear_Reunion.CR_CorreoInvitacion"
+            android:name=".APP.GestionProyectos.Crear_Reunion.CR_CorreoInvitacion"
             android:exported="false" />
         <activity
-            android:name=".Crear_Reunion.CR_AnadirColaborador"
+            android:name=".APP.GestionProyectos.Crear_Reunion.CR_AnadirColaborador"
             android:exported="false" />
         <activity
-            android:name=".Crear_Reunion.CR_NuevaReunion"
+            android:name=".APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion"
             android:exported="false" />
         <activity
-            android:name=".Modificacion_De_Informacion.MI_EstadoDeTarea"
+            android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_EstadoDeTarea"
             android:exported="false" />
         <activity
-            android:name=".Modificacion_De_Informacion.MI_Tareas"
+            android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_Tareas"
             android:exported="false" />
         <activity
-            android:name=".Modificacion_De_Informacion.MI_ModificarTarea"
+            android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea"
             android:exported="false" />
         <activity
             android:name=".Consulta_De_Proyectos.CP_Tareas"
@@ -64,19 +64,19 @@
             android:name=".Consulta_De_Proyectos.CP_Consulta_De_Proyectos"
             android:exported="false" />
         <activity
-            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios"
+            android:name=".APP.GestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios"
             android:exported="false" />
         <activity
-            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
+            android:name=".APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
             android:exported="false" />
         <activity
-            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_AnadirColaborador"
+            android:name=".APP.GestionProyectos.Creacion_De_Proyectos.GP_AnadirColaborador"
             android:exported="false" />
         <activity
-            android:name=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_AnadirTareas"
+            android:name=".APP.GestionProyectos.Creacion_De_Proyectos.GP_AnadirTareas"
             android:exported="false" />
         <activity
-            android:name=".Main_GestionProyectos"
+            android:name=".APP.Main_GestionProyectos"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

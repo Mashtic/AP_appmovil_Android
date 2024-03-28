@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Evaluaciones.Foros.E_F_CrearForo">
+    tools:context=".APP.Evaluaciones.Foros.E_F_CrearForo">
 
     <LinearLayout
         android:layout_width="match_parent"

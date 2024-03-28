@@ -1,4 +1,4 @@
-package com.example.setion_ap
+package com.example.setion_ap.APP
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.Consulta_De_Proyectos.CP_Consulta_De_Proyectos
-import com.example.setion_ap.Consulta_De_Proyectos.CP_Tareas
-import com.example.setion_ap.Crear_Reunion.CR_NuevaReunion
-import com.example.setion_ap.Modificacion_De_Informacion.MI_ModificarTarea
-import com.example.setion_ap.pantallas_gestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
+import com.example.setion_ap.APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion
+import com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea
+import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
+import com.example.setion_ap.R
 
 class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnCreacionDeProyectos:Button

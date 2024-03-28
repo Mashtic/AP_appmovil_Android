@@ -6,7 +6,7 @@
     android:background="@color/screen_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallas_gestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios">
+    tools:context=".APP.GestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios">
 
     <!--LOGO TEC-->
     <FrameLayout

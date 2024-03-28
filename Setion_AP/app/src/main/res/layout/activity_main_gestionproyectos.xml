@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:background="@color/screen_background"
-    tools:context=".Main_GestionProyectos">
+    tools:context=".APP.Main_GestionProyectos">
 
 
     <FrameLayout

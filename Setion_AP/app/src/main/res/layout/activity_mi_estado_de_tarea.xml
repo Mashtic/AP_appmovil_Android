@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Modificacion_De_Informacion.MI_EstadoDeTarea"
+    tools:context=".APP.GestionProyectos.Modificacion_De_Informacion.MI_EstadoDeTarea"
     android:paddingHorizontal="20dp"
     android:background="@color/screen_background">
 
