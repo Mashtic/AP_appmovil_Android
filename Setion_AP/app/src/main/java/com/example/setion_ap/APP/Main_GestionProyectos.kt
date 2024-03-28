@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.Consulta_De_Proyectos.CP_Consulta_De_Proyectos
+import com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos.CP_Consulta_De_Proyectos
 import com.example.setion_ap.APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion
 import com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea
 import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos

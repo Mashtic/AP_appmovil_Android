@@ -40,10 +40,10 @@
             android:name=".APP.Main_Evaluaciones"
             android:exported="false" />
         <activity
-            android:name=".APP.GestionProyectos.Crear_Reunion.CR_CorreoInvitacion"
+            android:name=".APP.GestionProyectos.Crear_Reunion.CR_AnadirColaborador"
             android:exported="false" />
         <activity
-            android:name=".APP.GestionProyectos.Crear_Reunion.CR_AnadirColaborador"
+            android:name=".APP.GestionProyectos.Crear_Reunion.CR_CorreoInvitacion"
             android:exported="false" />
         <activity
             android:name=".APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion"
@@ -52,16 +52,16 @@
             android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_EstadoDeTarea"
             android:exported="false" />
         <activity
-            android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_Tareas"
-            android:exported="false" />
-        <activity
             android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea"
             android:exported="false" />
         <activity
-            android:name=".Consulta_De_Proyectos.CP_Tareas"
+            android:name=".APP.GestionProyectos.Modificacion_De_Informacion.MI_Tareas"
             android:exported="false" />
         <activity
-            android:name=".Consulta_De_Proyectos.CP_Consulta_De_Proyectos"
+            android:name=".APP.GestionProyectos.Consulta_De_Proyectos.CP_Consulta_De_Proyectos"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionProyectos.Consulta_De_Proyectos.CP_Tareas"
             android:exported="false" />
         <activity
             android:name=".APP.GestionProyectos.Creacion_De_Proyectos.GP_HistorialDeCambios"

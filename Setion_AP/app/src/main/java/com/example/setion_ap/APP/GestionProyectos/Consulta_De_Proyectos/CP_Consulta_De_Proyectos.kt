@@ -1,4 +1,4 @@
-package com.example.setion_ap.Consulta_De_Proyectos
+package com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos
 
 import android.os.Bundle
 import android.widget.Button

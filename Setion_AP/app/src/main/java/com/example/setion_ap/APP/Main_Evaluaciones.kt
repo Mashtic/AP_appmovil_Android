@@ -12,7 +12,10 @@ import com.example.setion_ap.APP.Evaluaciones.E_InformeGeneral
 import com.example.setion_ap.APP.Evaluaciones.E_CreacionDeForos
 import com.example.setion_ap.R
 
-class Main_Evaluaciones : AppCompatActivity() {
+class
+
+
+Main_Evaluaciones : AppCompatActivity() {
 
     private lateinit var btnInformeGeneral:Button
     private lateinit var btnBurndownChart:Button
