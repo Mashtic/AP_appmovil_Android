@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Evaluaciones.E_CreacionDeForos">
+
+    <FrameLayout
+        android:id="@+id/frame_logo_F"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec_F"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logotec2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            >
+
+        </ImageView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnUsarForo_F"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Usar un foro">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnCrearForo_F"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Crear un foro">
+
+        </Button>
+
+
+
+
+        <Button
+            android:id="@+id/btnAtras_F"
+            android:layout_width="202dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="300dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Atras">
+
+        </Button>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
