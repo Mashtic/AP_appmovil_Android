@@ -1,23 +1,52 @@
 package com.example.setion_ap.pantallas_gestionProyectos.Creacion_De_Proyectos
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.Main_GestionProyectos
+import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
+import java.sql.Date
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
+import java.util.Locale
 
 class GP_CreacionProyectos : AppCompatActivity() {
+    //VARIABLES GLOBALES
+    val LIM_INF_ESTADOPROYECT: Int = 1
+    val LIM_SUP_ESTADOPROYECT: Int = 8
+
+    //BUTTONS
     private lateinit var btnCancelar: Button
     private lateinit var btnGuardar: Button
     private lateinit var btnHistorialDeCambios: Button
     private lateinit var btnAnadirTarea: Button
     private lateinit var imgLupa: ImageView
+    private lateinit var imgCalendario: ImageView
+
+    //TEXTVIEW EDITTEXT
+    private lateinit var edNombre: EditText
+    private lateinit var edRecursosNecesarios: EditText
+    private lateinit var edPresupuesto: EditText
+    private lateinit var edColaboradores: EditText
+    private lateinit var edEstadoDeProyecto: EditText
+    private lateinit var edDescripcion: EditText
+    private lateinit var tvFechaDeInicio: TextView
+    private lateinit var edResponsable: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +70,17 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
         //IMAGES
         imgLupa=findViewById(R.id.imgLUPA_GPCREACIONPROYECTOS)
+        imgCalendario=findViewById(R.id.imgCALENDAR_GPCREACIONPROYECTOS)
+
+        //TEXTVIEW
+        edNombre = findViewById(R.id.edNombre_GPCREACIONPROYECTOS)
+        edRecursosNecesarios = findViewById(R.id.edRecursosNecesarios_GPCREACIONPROYECTOS)
+        edPresupuesto = findViewById(R.id.edPresupuesto_GPCREACIONPROYECTOS)
+        edColaboradores = findViewById(R.id.edColaboradores_GPCREACIONPROYECTOS)
+        edEstadoDeProyecto = findViewById(R.id.edEstadoDelProyecto_GPCREACIONPROYECTOS)
+        edDescripcion = findViewById(R.id.edDescripcion_GPCREACIONPROYECTOS)
+        tvFechaDeInicio = findViewById(R.id.tvFechaDeInicio_GPCREACIONPROYECTOS)
+        edResponsable = findViewById(R.id.edResponsable_GPCREACIONPROYECTOS)
     }
 
     private fun initListeners() {
@@ -54,6 +94,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
         //IMAGENES
         imgLupa.setOnClickListener { fun_AnadirColaborador() }
+        imgCalendario.setOnClickListener { fun_AnadirFecha() }
     }
 
     private fun fun_AnadirColaborador() {
@@ -62,8 +103,31 @@ class GP_CreacionProyectos : AppCompatActivity() {
     }
 
     private fun fun_GuardarDatos() {
-        /*Codigo para guardar los datos*/
-        finish()
+        if(edNombre.text.isNotEmpty()&&
+            edRecursosNecesarios.text.isNotEmpty()&&
+            edPresupuesto.text.isNotEmpty()&&
+            edColaboradores.text.isNotEmpty()&&
+            edEstadoDeProyecto.text.isNotEmpty()&&
+            edDescripcion.text.isNotEmpty()&&
+            tvFechaDeInicio.text.isNotEmpty()&&
+            edResponsable.text.isNotEmpty()){
+
+            if(edEstadoDeProyecto.text.toString().toInt()<LIM_INF_ESTADOPROYECT
+                || edEstadoDeProyecto.text.toString().toInt()>LIM_SUP_ESTADOPROYECT) {
+                edEstadoDeProyecto.setText("2")
+            }
+
+            GP_Procedures.insertarProyecto(edNombre.text.toString(),
+                edPresupuesto.text.toString().toDouble(),
+                edEstadoDeProyecto.text.toString().toInt(),
+                edDescripcion.text.toString(),
+                convertirStringADate(tvFechaDeInicio.text.toString()),
+                edResponsable.text.toString(), this)
+        }else
+        {
+            Toast.makeText(this, "No puede haber espacios sin rellenar", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun fun_HistorialDeCambios() {
@@ -72,8 +136,52 @@ class GP_CreacionProyectos : AppCompatActivity() {
     }
 
     private fun fun_AnadirTarea() {
-        println("Entramos al intent")
+        /*println("Entramos al intent")
         intent = Intent(this, GP_AnadirTareas::class.java)
-        startActivity(intent)
+        startActivity(intent)*/
+
+        convertirStringADate(tvFechaDeInicio.text.toString())
+    }
+
+    private fun fun_AnadirFecha() {
+        val calendario = Calendar.getInstance()
+        val año = calendario.get(Calendar.YEAR)
+        val mes = calendario.get(Calendar.MONTH)
+        val día = calendario.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                // La fecha seleccionada por el usuario se muestra en el TextView
+                val fechaSeleccionada = "$dayOfMonth/${month + 1}/$year"
+                tvFechaDeInicio.text = fechaSeleccionada
+            },
+            año,
+            mes,
+            día
+        )
+        datePickerDialog.show()
+    }
+
+
+    //FUNCIONES EXTRAS
+
+    //Función para convertir string a fecha
+    private fun convertirStringADate(fechaTexto: String): java.sql.Date {
+        // Definir el formato de fecha deseado
+        val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+        return try {
+            // Parsear el texto de fecha al formato definido
+            val fecha = formato.parse(fechaTexto)
+            println(java.sql.Date(fecha.time))
+
+            // Convertir el objeto Date a java.sql.Date
+            java.sql.Date(fecha.time)
+        } catch (ex: Exception) {
+            // Manejar cualquier excepción que pueda ocurrir durante la conversión
+            ex.printStackTrace()
+            java.sql.Date(System.currentTimeMillis())
+        }
     }
 }
