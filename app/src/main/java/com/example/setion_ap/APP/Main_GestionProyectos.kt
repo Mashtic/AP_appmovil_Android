@@ -1,9 +1,11 @@
 package com.example.setion_ap.APP
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,6 +15,11 @@ import com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion.MI
 import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
+import java.sql.Date
+import java.sql.Time
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnCreacionDeProyectos:Button
@@ -21,10 +28,19 @@ class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnCreacionDeReuniones:Button
     private lateinit var btnAtras:Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val prysT = GP_Procedures.get_ProyectoTareas()
-        println("Aqui estamos: $prysT")
+
+
+        val crearC= GP_Procedures.set_insertarColaborador("401415459", "Gabriel Martinez",
+            "gabm@gmail.com", 2,"12313121","contra")
+        //val modColPry2 = GP_Procedures.get_tareasPorEstadoYEncargado(3
+          //  , null)
+        //val modColPry3 = GP_Procedures.get_tareasPorEstadoYEncargado(null, null)
+        println("Mira::: $crearC")
+        //println("Mira::: $modColPry2")
+        //println("Mira::: $modColPry3")
 
         //GP_Procedures.set_colaboradorProyecto(122342343, 4)
 

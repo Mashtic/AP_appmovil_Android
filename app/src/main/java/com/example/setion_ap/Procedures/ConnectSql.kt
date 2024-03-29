@@ -15,7 +15,7 @@ class ConnectSql {
     private val username = "dav"
     private val password = "12345"
     */
-    private val ip = "192.168.1.4:1433"
+    private val ip = "192.168.0.4:1433"
     private val db = "GestorProyectos"
     private val username = "jei"
     private val password = "12345"
@@ -78,6 +78,7 @@ data class vParticipantesReuniones(
 data class vProyectoTareas(
     val idProyecto: Int,
     val nombrePry: String,
+    val tareaId: Int,
     val descripcion: String, // tema de la reunión
     val storyPoint: Int,
     val nombEstadoTarea: String,
@@ -121,14 +122,31 @@ data class aTareaPry(
     val encargado: String
 )
 
+
+
 /**
- * Clase que define como agregar un colaborador a un proyecto
+ * Clase que define las propiedades necesarias
  */
-data class v(
-    val proyectoID: Int,
+data class uModificarTarea(
+    val idProyecto: Int,
+    val tareaId: Int,
     val descripcion: String,
-    val storyPoint: Int,
+    val storyPoint: Int, // tema de la reunión
     val estadoTarea: Int,
     val encargado: String
 )
 
+
+/**
+ *  * Clase que define las propiedades necesarias para mostrar las tareas POR EL ESTADO DE LA TAREA
+ *  Y POR EL ENCARGADO.
+ */
+data class vTareasPorEstadoYEncargado(
+    val idProyecto: Int,
+    val nombrePry: String,
+    val tareaId: Int,
+    val descripcion: String,
+    val storyPoint: Int, // tema de la reunión
+    val estadoTarea: String,
+    val encargado: String
+)
