@@ -33,19 +33,8 @@ class Main_GestionProyectos : AppCompatActivity() {
 
 
 
-        val verifica = GP_Procedures.verificarCredenciales("jeisonfo@gmail.com", "advs")
+        val verifica = GP_Procedures.set_agregarParticipanteReunion(1, "122342343")
         println("Mira::: $verifica")
-
-        //val modColPry2 = GP_Procedures.get_tareasPorEstadoYEncargado(3
-          //  , null)
-        //val modColPry3 = GP_Procedures.get_tareasPorEstadoYEncargado(null, null)
-        //println("Mira::: $updC("122342343", null, null, 2)")
-        //println("Mira::: $foro")
-        //println("Mira::: $modColPry3")
-
-        //GP_Procedures.set_colaboradorProyecto(122342343, 4)
-
-        //GP_Procedures.set_tareaProyecto(2, "CSS cambiado", 5, 3, "1234567890")
 
 
         super.onCreate(savedInstanceState)
