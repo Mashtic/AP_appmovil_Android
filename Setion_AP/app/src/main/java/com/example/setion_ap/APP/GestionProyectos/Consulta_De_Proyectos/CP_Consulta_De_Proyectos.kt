@@ -62,6 +62,7 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
     private fun initListeners() {
         btnAtras.setOnClickListener{finish()}
         imgLupa.setOnClickListener{}
+        listView.setOnItemClickListener(this)
     }
 
     private fun fun_AnadirItem(texto: String) {
