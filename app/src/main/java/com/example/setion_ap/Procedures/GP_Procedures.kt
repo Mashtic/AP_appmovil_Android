@@ -262,7 +262,7 @@ object GP_Procedures {
 
     /**
      * @param:
-     * @return: Una lista con los participantes de las reuniones.
+     * @return: Una lista con las tareas de los proyectos.
      * asignado.
      */
     fun get_ProyectoTareas( ): List<vProyectoTareas> {
@@ -270,7 +270,7 @@ object GP_Procedures {
 
         try {
             // Preparar la llamada al stored procedure
-            val statement = connectSql.dbConn()?.prepareCall("{call MostrarInfoParticipantesReuniones}")
+            val statement = connectSql.dbConn()?.prepareCall("{call MostrarInfoProyectoTareas}")
 
             // Ejecutar el stored procedure
             val resultSet = statement?.executeQuery()
@@ -279,6 +279,7 @@ object GP_Procedures {
             if (resultSet != null) {
                 while (resultSet.next()!! == true) {
                     val tareaPry = vProyectoTareas(
+                        idProyecto = resultSet.getInt("Proyecto id"),
                         nombrePry = resultSet.getString("Nombre proyecto"),
                         descripcion = resultSet.getString("Descripción"),
                         storyPoint = resultSet.getInt("Story Point"),
@@ -302,4 +303,122 @@ object GP_Procedures {
         return tareasProyectos
     }
 
+    /**
+     * @param:
+     * @return: Una lista con las tareas de los proyectos.
+     * asignado.
+     */
+    fun get_Proyectos( ): List<vProyectos> {
+        val proyectos = mutableListOf<vProyectos>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement = connectSql.dbConn()?.prepareCall("{call MostrarInformacionProyectos}")
+
+            // Ejecutar el stored procedure
+            val resultSet = statement?.executeQuery()
+
+            // Procesar los resultados
+            if (resultSet != null) {
+                while (resultSet.next()!! == true) {
+                    val proyecto = vProyectos(
+                        id = resultSet.getInt("Id"),
+                        nombrePry = resultSet.getString("Nombre"),
+                        presupuesto = resultSet.getDouble("Presupuesto"),
+                        estadoPry = resultSet.getString("Estado del proyecto"),
+                        descripcion = resultSet.getString("Descripción"),
+                        fechaInicio = resultSet.getString("Fecha inicio"),
+                        nombRespons = resultSet.getString("Responsable"),
+                        recursosNecesarios = resultSet.getString("Recursos necesarios"),
+                    )
+                    proyectos.add(proyecto)
+                }
+            }
+        } catch (e1: SQLException) {
+            println("Error:::$e1")
+        } finally {
+            // Asegurarse de cerrar la conexión
+            try {
+                connectSql.dbConn()?.close()
+            } catch (e2: SQLException) {
+                // Manejo de error al cerrar conexión
+                println("Error:::$e2")
+            }
+        }
+        return proyectos
+    }
+
+    /**
+     * @param: cedula del colaborador, el identificador del proyecto
+     * @return: Agrega el colaborador al proyecto.
+     */
+    fun set_colaboradorProyecto(cedula: Int, pryId: Int){
+        try {
+            val callStatement = connectSql.dbConn()?.prepareCall("{CALL sp_AsignarColaboradorAProyecto(?, ?)}")
+
+            callStatement?.setInt(1, cedula)
+            callStatement?.setInt(2, pryId)
+            callStatement!!?.execute()
+            println("Se ha asignado un colaborador al proyecto.")
+
+            //            Toast.makeText(contex, "Se ha insertado correctamente", Toast.LENGTH_LONG).show()
+        } catch (ex: SQLException) {
+            println("Error: $ex")
+            //Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    /**
+     * @param: id del proyecto, descripcion de la tarea, un story point, un estado de la tarea, un
+     * encargado
+     * @return: Agrega una tarea al proyecto
+     */
+    fun set_tareaProyecto(pryId: Int, descripcion: String, storyPoint: Int,
+                          estadoTarea: Int, encargado: String){
+        try {
+            val callStatement = connectSql.dbConn()?.prepareCall("{CALL sp_InsertarTareaAProyecto(?, ?, ?, ?, ?)}")
+
+            callStatement?.setInt(1, pryId)
+            callStatement?.setString(2, descripcion)
+            callStatement?.setInt(3, storyPoint)
+            callStatement?.setInt(4, estadoTarea)
+            callStatement?.setString(5, encargado)
+            callStatement!!.execute()
+            println("Se ha agregado una tarea al proyecto.")
+
+            //            Toast.makeText(contex, "Se ha insertado correctamente", Toast.LENGTH_LONG).show()
+        } catch (ex: SQLException) {
+            println("Error: $ex")
+            //Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
+        }
+    }
+
+
 }
+
+
+/**
+ * dbo.MostrarColaboradoresXProyecto ---
+ * dbo.MostrarInfoColaboradores ---
+ * dbo.MostrarInfoParticipantesReuniones ---
+ * dbo.MostrarInfoProyectoTareas ---
+ * dbo.MostrarInfoProyectos ---
+ * dbo.MostrarInfoReuniones ---
+ * dbo.MostrarInformacionProyectos ---
+ * dbo.sp_AgregarMensajeAForo
+ * dbo.sp_AgregarParticipanteAReunion
+ * dbo.sp_AsignarColaboradorAProyecto ---
+ * dbo.sp_CrearForo
+ * dbo.sp_CrearReunion
+ * dbo.sp_EliminarColaboradorDeProyecto
+ * dbo.sp_InsertarColaborador
+ * dbo.sp_InsertarProyecto ---
+ * dbo.sp_InsertarRecursoAProyecto ---
+ * dbo.sp_InsertarTareaAProyecto ---
+ * dbo.sp_ModificarColaborador
+ * dbo.sp_ModificarTarea
+ * dbo.sp_ObtenerTareasPorEstadoYEncargado
+ * dbo.sp_ReasignarColaboradorAProyecto
+ * dbo.sp_VerificarCredenciales
+ *
+ */

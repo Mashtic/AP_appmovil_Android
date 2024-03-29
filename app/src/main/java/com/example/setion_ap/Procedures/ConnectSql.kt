@@ -76,9 +76,59 @@ data class vParticipantesReuniones(
  * Clase que define las tareas por proyecto
  */
 data class vProyectoTareas(
+    val idProyecto: Int,
     val nombrePry: String,
-    val descripcion: String, //
-    val storyPoint: Int, //
-    val nombEstadoTarea: String, //
-    val nombEnc: String, // nombre del encargado
+    val descripcion: String, // tema de la reunión
+    val storyPoint: Int,
+    val nombEstadoTarea: String,
+    val nombEnc: String
 )
+
+
+
+
+/**
+ * Clase que define los proyectos
+ */
+data class vProyectos(
+    val id: Int,
+    val nombrePry: String,
+    val presupuesto: Double,
+    val estadoPry: String, //
+    val descripcion: String, //
+    val fechaInicio: String, //
+    val nombRespons: String, // nombre del responsable
+    val recursosNecesarios: String
+)
+
+/**
+ * Clase que define como agregar un colaborador a un proyecto
+ */
+data class aColaboradorPry(
+    val cedula: Int,
+    val pryId: Int
+)
+
+
+/**
+ * Clase que define como agregar un colaborador a un proyecto
+ */
+data class aTareaPry(
+    val proyectoID: Int,
+    val descripcion: String,
+    val storyPoint: Int,
+    val estadoTarea: Int,
+    val encargado: String
+)
+
+/**
+ * Clase que define como agregar un colaborador a un proyecto
+ */
+data class v(
+    val proyectoID: Int,
+    val descripcion: String,
+    val storyPoint: Int,
+    val estadoTarea: Int,
+    val encargado: String
+)
+

@@ -23,8 +23,12 @@ class Main_GestionProyectos : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val pryTarea = GP_Procedures.get_ProyectoTareas()
-        println("Aqui estamos: $pryTarea")
+        val prysT = GP_Procedures.get_ProyectoTareas()
+        println("Aqui estamos: $prysT")
+
+        //GP_Procedures.set_colaboradorProyecto(122342343, 4)
+
+        //GP_Procedures.set_tareaProyecto(2, "CSS cambiado", 5, 3, "1234567890")
 
 
         super.onCreate(savedInstanceState)
