@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:paddingHorizontal="12dp"
     tools:context=".APP.GestionProyectos.Consulta_De_Proyectos.CP_Consulta_De_Proyectos">
 
 
@@ -82,12 +84,11 @@
 
 <!--        OPINION: Pienso que para que esto funcione, necesito un SCROLLVIEW-->
         <!--LISTA PROYECTOS-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_proyectos"
+        <ListView
+            android:id="@+id/listView_CPCONSULTAPROYECTOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="1dp"
-            tools:ignore="MissingConstraints" />
+            />
     </LinearLayout>
 
     <!--BOTON ATRAS-->

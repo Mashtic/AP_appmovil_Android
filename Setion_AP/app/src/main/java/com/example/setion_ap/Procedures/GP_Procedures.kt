@@ -5,6 +5,7 @@ import android.widget.Toast
 import java.sql.SQLException
 
 private var connectSql = ConnectSql()
+
 object GP_Procedures {
     fun insertarProyecto(nombre: String, presupuesto: Double, estadoDelProyecto: Int,
                          descripcion: String, fechaInicio: java.sql.Date, responsable: String, contex:Context){
@@ -25,5 +26,24 @@ object GP_Procedures {
         }
     }
 
-    //ASDAAASD
+    fun GET_PROYECTOS(connectSql: ConnectSql): ArrayList<String> {
+        val datosPrueba = ArrayList<String>()
+
+        try {
+            val consulta = connectSql.dbConn()?.prepareStatement("SELECT nombre FROM Proyectos")
+            val resultado = consulta?.executeQuery()
+
+            while (resultado?.next() == true) {
+                val nombre = resultado.getString("nombre")
+                datosPrueba.add(nombre)
+            }
+
+            resultado?.close()
+            consulta?.close()
+        } catch (ex: SQLException) {
+            ex.printStackTrace()
+        }
+
+        return datosPrueba
+    }
 }
