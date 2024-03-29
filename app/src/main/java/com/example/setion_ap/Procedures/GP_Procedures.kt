@@ -572,6 +572,108 @@ object GP_Procedures {
         }
     }
 
+    /**
+     * @param: cedula del colaborador, nuevo email, nuevo telefono, nuevo departamento
+     * @return: update del colaborador
+     */
+    fun update_colaborador(cedula: String, email:String?, telefono: String?, departament: Int?) {
+        try {
+            val callStatement =
+                connectSql.dbConn()?.prepareCall("{CALL sp_ModificarColaborador(?,?,?,?)}")
+
+
+            callStatement?.setString(1, cedula)
+
+            if (email != null) {
+                callStatement?.setString(2, email)
+            } else {
+                callStatement?.setNull(2, java.sql.Types.VARCHAR)
+            }
+
+            if (telefono != null) {
+                callStatement?.setString(3, telefono)
+            } else {
+                callStatement?.setNull(3, java.sql.Types.VARCHAR)
+            }
+
+            if (departament != null) {
+                callStatement?.setInt(4, departament)
+            } else {
+                callStatement?.setNull(4, java.sql.Types.INTEGER)
+            }
+
+            callStatement?.executeUpdate()
+            println("Información del colaborador actualizada con éxito.")
+
+        } catch (e: SQLException) {
+            println("Error al actualizar el colaborador: ${e.message}")
+        } finally {
+            connectSql.dbConn()?.close()
+
+        }
+    }
+
+    /**
+     * @param: nombre del foro, descripcion, idProyecto: Int? (si es null, es foro general)
+     * @return: update del colaborador
+     */
+    fun set_insertarForo(nombre: String, descripcion:String, idProyecto: Int?) {
+        try {
+            val callStatement =
+                connectSql.dbConn()?.prepareCall("{CALL sp_CrearForo(?,?,?)}")
+
+
+            callStatement?.setString(1, nombre)
+            callStatement?.setString(2, descripcion)
+
+
+            if (idProyecto != null) {
+                callStatement?.setInt(3, idProyecto)
+            } else {
+                callStatement?.setNull(3, java.sql.Types.INTEGER)
+            }
+
+            callStatement?.execute()
+            println("Creado un nuevo foro.")
+
+        } catch (e: SQLException) {
+            println("Error al crear el foro: ${e.message}")
+        } finally {
+            connectSql.dbConn()?.close()
+
+        }
+    }
+
+    /**
+     * Funcion para verificar las credenciales de un usuario
+     */
+    fun verificarCredenciales(email: String, contrasenna: String): Boolean {
+        var esValido = false
+
+        try {
+            val callStatement =
+                connectSql.dbConn()?.prepareCall("{CALL sp_VerificarCredenciales(?,?,?)}")
+
+            // Seteamos los valores de los parámetros
+            callStatement?.setString(1, email)
+            callStatement?.setString(2, contrasenna)
+
+            // Registramos el parámetro de salida
+            callStatement?.registerOutParameter(3, java.sql.Types.INTEGER)
+
+            // Ejecutamos el stored procedure
+            callStatement?.execute()
+
+            // Obtenemos el valor del parámetro de salida
+            esValido = callStatement?.getInt(3) == 1
+
+        } catch (e: SQLException) {
+            println("Error al verificar las credenciales: ${e.message}")
+        } finally {
+            connectSql.dbConn()?.close()
+        }
+        return esValido
+    }
 
 
 
@@ -589,17 +691,17 @@ object GP_Procedures {
  * dbo.sp_AgregarMensajeAForo
  * dbo.sp_AgregarParticipanteAReunion
  * dbo.sp_AsignarColaboradorAProyecto ---
- * dbo.sp_CrearForo
+ * dbo.sp_CrearForo ---
  * dbo.sp_CrearReunion ?? Revisar
  * dbo.sp_EliminarColaboradorDeProyecto ---
  * dbo.sp_InsertarColaborador ---
  * dbo.sp_InsertarProyecto ---
  * dbo.sp_InsertarRecursoAProyecto ---
  * dbo.sp_InsertarTareaAProyecto ---
- * dbo.sp_ModificarColaborador
+ * dbo.sp_ModificarColaborador ---
  * dbo.sp_ModificarTarea ---
  * dbo.sp_ObtenerTareasPorEstadoYEncargado ---
  * dbo.sp_ReasignarColaboradorAProyecto ---
- * dbo.sp_VerificarCredenciales
+ * dbo.sp_VerificarCredenciales ---
  *
  */

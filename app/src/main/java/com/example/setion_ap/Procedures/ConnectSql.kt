@@ -15,7 +15,7 @@ class ConnectSql {
     private val username = "dav"
     private val password = "12345"
     */
-    private val ip = "192.168.0.4:1433"
+    private val ip = "192.168.43.218:1433"
     private val db = "GestorProyectos"
     private val username = "jei"
     private val password = "12345"
@@ -149,4 +149,14 @@ data class vTareasPorEstadoYEncargado(
     val storyPoint: Int, // tema de la reunión
     val estadoTarea: String,
     val encargado: String
+)
+
+/**
+ * Clase para definir los parametros necesarios para modificar un colaborador
+ */
+data class uColaborador(
+    val cedula: String,
+    val email: String,
+    val telefono: String,
+    val departamento: Int
 )

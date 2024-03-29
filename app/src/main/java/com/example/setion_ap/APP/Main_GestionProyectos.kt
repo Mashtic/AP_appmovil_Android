@@ -33,13 +33,14 @@ class Main_GestionProyectos : AppCompatActivity() {
 
 
 
-        val crearC= GP_Procedures.set_insertarColaborador("401415459", "Gabriel Martinez",
-            "gabm@gmail.com", 2,"12313121","contra")
+        val verifica = GP_Procedures.verificarCredenciales("jeisonfo@gmail.com", "advs")
+        println("Mira::: $verifica")
+
         //val modColPry2 = GP_Procedures.get_tareasPorEstadoYEncargado(3
           //  , null)
         //val modColPry3 = GP_Procedures.get_tareasPorEstadoYEncargado(null, null)
-        println("Mira::: $crearC")
-        //println("Mira::: $modColPry2")
+        //println("Mira::: $updC("122342343", null, null, 2)")
+        //println("Mira::: $foro")
         //println("Mira::: $modColPry3")
 
         //GP_Procedures.set_colaboradorProyecto(122342343, 4)
