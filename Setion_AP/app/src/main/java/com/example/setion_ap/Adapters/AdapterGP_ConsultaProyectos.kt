@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.setion_ap.R
 
@@ -12,7 +13,6 @@ class AdapterGP_ConsultaProyectos(context: Context, resource: Int, objects: List
     ArrayAdapter<String>(context, resource, objects) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
-        convertView
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.__item_cp_consulta_proyectos, parent, false)
