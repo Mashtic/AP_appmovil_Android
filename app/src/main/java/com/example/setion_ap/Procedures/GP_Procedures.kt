@@ -645,50 +645,6 @@ object GP_Procedures {
     }
 
     /**
-     * @param: nombre del foro, descripcion, idProyecto: Int? (si es null, es foro general)
-     * @return: update del colaborador
-     */
-    fun set_agregarMensajeEnForo(foroId: Int, autor:String, contenido: String) {
-        try {
-            val callStatement =
-                connectSql.dbConn()?.prepareCall("{CALL sp_AgregarMensajeAForo(?,?,?)}")
-
-
-            callStatement?.setInt(1, foroId)
-            callStatement?.setString(2, autor)
-            callStatement?.setString(3, contenido)
-            callStatement?.execute()
-            println("Se ha creado el mensaje en el foro.")
-
-        } catch (e: SQLException) {
-            println("Error al crear el MENSAJE EN EL foro: ${e.message}")
-        } finally {
-            connectSql.dbConn()?.close()
-
-        }
-    }
-
-    /**
-     * @param: nombre del foro, descripcion, idProyecto: Int? (si es null, es foro general)
-     * @return: update del colaborador
-     */
-    fun set_agregarParticipanteReunion(reunionId: Int, cedParticipante: String) {
-        try {
-            val callStatement =
-                connectSql.dbConn()?.prepareCall("{CALL sp_AgregarParticipanteAReunion(?,?)}")
-
-            callStatement?.setInt(1, reunionId)
-            callStatement?.setString(2, cedParticipante)
-            println("Se ha agregado un nuevo participante en la reunión.")
-
-        } catch (e: SQLException) {
-            println("Error al agregar participante en la reunión: ${e.message}")
-        } finally {
-            connectSql.dbConn()?.close()
-        }
-    }
-
-    /**
      * Funcion para verificar las credenciales de un usuario
      */
     fun verificarCredenciales(email: String, contrasenna: String): Boolean {
@@ -732,8 +688,8 @@ object GP_Procedures {
  * dbo.MostrarInfoProyectos ---
  * dbo.MostrarInfoReuniones ---
  * dbo.MostrarInformacionProyectos ---
- * dbo.sp_AgregarMensajeAForo ---
- * dbo.sp_AgregarParticipanteAReunion ?? Revisar
+ * dbo.sp_AgregarMensajeAForo
+ * dbo.sp_AgregarParticipanteAReunion
  * dbo.sp_AsignarColaboradorAProyecto ---
  * dbo.sp_CrearForo ---
  * dbo.sp_CrearReunion ?? Revisar
