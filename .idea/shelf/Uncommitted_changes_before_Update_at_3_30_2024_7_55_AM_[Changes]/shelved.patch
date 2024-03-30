@@ -1,0 +1,255 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1711468235976)
++++ b/.idea/compiler.xml	(date 1711468235976)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="17" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1711425424472)
++++ b/.idea/misc.xml	(date 1711425424472)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_jetbrains_kotlin_kotlin_script_runtime_1_9_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_script_runtime_1_9_0.xml b/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_script_runtime_1_9_0.xml
+new file mode 100644
+--- /dev/null	(date 1711349511674)
++++ b/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_script_runtime_1_9_0.xml	(date 1711349511674)
+@@ -0,0 +1,14 @@
++<component name="libraryTable">
++  <library name="Maven: org.jetbrains.kotlin:kotlin-script-runtime:1.9.0" type="repository">
++    <properties maven-id="org.jetbrains.kotlin:kotlin-script-runtime:1.9.0" />
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-script-runtime/1.9.0/kotlin-script-runtime-1.9.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-script-runtime/1.9.0/kotlin-script-runtime-1.9.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jetbrains/kotlin/kotlin-script-runtime/1.9.0/kotlin-script-runtime-1.9.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1711468235639)
++++ b/.idea/.name	(date 1711468235639)
+@@ -0,0 +1,1 @@
++App_PGP
+\ No newline at end of file
+Index: .idea/kotlinc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/kotlinc.xml b/.idea/kotlinc.xml
+new file mode 100644
+--- /dev/null	(date 1711425424524)
++++ b/.idea/kotlinc.xml	(date 1711425424524)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="KotlinJpsPluginSettings">
++    <option name="version" value="1.9.22" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1711349383982)
++++ b/.idea/.gitignore	(date 1711349383982)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1711349383878)
++++ b/.idea/vcs.xml	(date 1711349383878)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/migrations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/migrations.xml b/.idea/migrations.xml
+new file mode 100644
+--- /dev/null	(date 1711425424535)
++++ b/.idea/migrations.xml	(date 1711425424535)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectMigrations">
++    <option name="MigrateToGradleLocalJavaHome">
++      <set>
++        <option value="$PROJECT_DIR$/App_PGP" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1711425424543)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1711425424543)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <value>
++      <entry key="App_PGP.app">
++        <State />
++      </entry>
++    </value>
++  </component>
++</project>
+\ No newline at end of file
+Index: App_PGP/app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id(\"com.android.application\")\r\n    id(\"org.jetbrains.kotlin.android\")\r\n}\r\n\r\nandroid {\r\n    namespace = \"com.example.app_pgp\"\r\n    compileSdk = 34\r\n\r\n    defaultConfig {\r\n        applicationId = \"com.example.app_pgp\"\r\n        minSdk = 24\r\n        targetSdk = 34\r\n        versionCode = 1\r\n        versionName = \"1.0\"\r\n\r\n        testInstrumentationRunner = \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            isMinifyEnabled = false\r\n            proguardFiles(getDefaultProguardFile(\"proguard-android-optimize.txt\"), \"proguard-rules.pro\")\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility = JavaVersion.VERSION_1_8\r\n        targetCompatibility = JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = \"1.8\"\r\n    }\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation(\"androidx.core:core-ktx:1.10.1\")\r\n    implementation(\"androidx.appcompat:appcompat:1.6.1\")\r\n    implementation(\"com.google.android.material:material:1.9.0\")\r\n    implementation(\"androidx.constraintlayout:constraintlayout:2.1.4\")\r\n    implementation(\"androidx.lifecycle:lifecycle-livedata-ktx:2.6.1\")\r\n    implementation(\"androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1\")\r\n    implementation(\"androidx.navigation:navigation-fragment-ktx:2.6.0\")\r\n    implementation(\"androidx.navigation:navigation-ui-ktx:2.6.0\")\r\n    testImplementation(\"junit:junit:4.13.2\")\r\n    androidTestImplementation(\"androidx.test.ext:junit:1.1.5\")\r\n    androidTestImplementation(\"androidx.test.espresso:espresso-core:3.5.1\")\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/App_PGP/app/build.gradle.kts b/App_PGP/app/build.gradle.kts
+--- a/App_PGP/app/build.gradle.kts	(revision 8ea207dca5bcfa8012c8c661d96cc1a1779bf071)
++++ b/App_PGP/app/build.gradle.kts	(date 1711468184289)
+@@ -1,3 +1,4 @@
++
+ plugins {
+     id("com.android.application")
+     id("org.jetbrains.kotlin.android")
+@@ -37,15 +38,19 @@
+ 
+ dependencies {
+ 
+-    implementation("androidx.core:core-ktx:1.10.1")
++    implementation("androidx.core:core-ktx:1.12.0")
+     implementation("androidx.appcompat:appcompat:1.6.1")
+-    implementation("com.google.android.material:material:1.9.0")
++    implementation("com.google.android.material:material:1.11.0")
+     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+-    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+-    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
++    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
++    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
++    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
++    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+     testImplementation("junit:junit:4.13.2")
+     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+-}
+\ No newline at end of file
++}
++
++fun plugins() {
++
++}
+Index: .idea/AP_appmovil_Android.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/AP_appmovil_Android.iml b/.idea/AP_appmovil_Android.iml
+new file mode 100644
+--- /dev/null	(date 1711349511658)
++++ b/.idea/AP_appmovil_Android.iml	(date 1711349511658)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-script-runtime:1.9.0" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1711467069874)
++++ b/.idea/gradle.xml	(date 1711467069874)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="externalProjectPath" value="$PROJECT_DIR$/App_PGP" />
++        <option name="gradleJvm" value="jbr-17" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$/App_PGP" />
++            <option value="$PROJECT_DIR$/App_PGP/app" />
++          </set>
++        </option>
++        <option name="resolveExternalAnnotations" value="false" />
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
