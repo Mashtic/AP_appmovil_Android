@@ -1,5 +1,6 @@
 package com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.Adapters.AdapterGP_ConsultaProyectos
 import com.example.setion_ap.Procedures.ConnectSql
 import com.example.setion_ap.Procedures.GP_Procedures
+import com.example.setion_ap.Procedures.vProyectos
 import com.example.setion_ap.R
 class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickListener {
     private lateinit var btnAtras:Button
@@ -28,6 +30,7 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
 
     //CONEXION SQL
     private var connectSql = ConnectSql()
+    private lateinit var listaProyectos:List<vProyectos>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,9 +48,9 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
 
     private fun cargarTodosProyectos() {
         println("Procedemos a cargar")
-        var array = GP_Procedures.GET_PROYECTOS(connectSql)
-        for (e in array){
-            fun_AnadirItem(e.toString())
+        listaProyectos = GP_Procedures.get_Proyectos()
+        for (e in listaProyectos){
+            fun_AnadirItem(e.nombrePry.toString())
         }
     }
 
@@ -65,6 +68,7 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
         listView.setOnItemClickListener(this)
     }
 
+    //Añade la LISTA DE PROYECTOS
     private fun fun_AnadirItem(texto: String) {
         ArrayLista.add(texto)
         mAdapter = AdapterGP_ConsultaProyectos(this, R.layout.__item_cp_consulta_proyectos, ArrayLista)
@@ -73,5 +77,11 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         Toast.makeText(this, "Elemento seleccionado: " + position, Toast.LENGTH_SHORT).show()
+
+        //Pasa a la pantalla de tareas para mostrar las tareas del proyecto que se seleccionó
+        val intent = Intent(this, CP_Tareas::class.java)
+        intent.putExtra("ProyectoName", listaProyectos.get(position).nombrePry.toString())
+        intent.putExtra("proyectId", listaProyectos.get(position).id)
+        startActivity(intent)
     }
 }

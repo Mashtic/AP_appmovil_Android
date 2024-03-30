@@ -11,6 +11,7 @@ import com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos.CP_Consu
 import com.example.setion_ap.APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion
 import com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea
 import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
+import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
 
 class Main_GestionProyectos : AppCompatActivity() {
@@ -29,6 +30,16 @@ class Main_GestionProyectos : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        println("ANTESSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+        val list = GP_Procedures.get_colaboradores_libres()
+        println(list.get(0).nombreCompleto)
+        println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        for (e in list){
+            println(e.proyecto + "        Nombre:" +
+            e.nombreCompleto)
+        }
+
         initComponents()
         initListeners()
     }
