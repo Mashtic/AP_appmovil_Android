@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".APP.GestionProyectos.Modificacion_De_Informacion.MI_Tareas">
+
+    <!--LOGO TEC-->
+    <FrameLayout
+        android:id="@+id/frame_logo_MITAREAS"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec_MITAREAS"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logotec2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            >
+        </ImageView>
+
+    </FrameLayout>
+
+    <!--Pantalla del medio-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_MITAREAS"
+        app:layout_constraintBottom_toTopOf="@+id/frame_botones_MITAREAS">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <!--TITULO-->
+            <FrameLayout
+                android:id="@+id/frame_titulo_MITAREAS"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/screen_background"
+                android:layout_marginHorizontal="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/frame_logo_MITAREAS">
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar estado de tarea"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Por hacer"
+                android:textStyle="bold"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvPorhacer_MITAREAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="En progreso"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvEnProgreso_MITAREAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Finalizado"
+                android:textStyle="bold"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvFinalizado_MITAREAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--BOTON ATRAS-->
+    <FrameLayout
+        android:id="@+id/frame_botones_MITAREAS"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/btnAtras_MITAREAS"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Atras"/>
+        </LinearLayout>
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

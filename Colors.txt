@@ -1,0 +1,48 @@
+    <color name="btn_blue">#002854</color>
+    <color name="btn_blue_selected">#850F549E</color>
+
+    <color name="btn_gray">#797171</color>
+    <color name="btn_gray_selected">#9A9393</color>
+
+    <color name="screen_background">#EDEDED</color>
+
+Apunte
+- Si se quiere utilizar un margen en toda la pantalla, en lugar de usar margin, su puede usar padding
+
+
+//Codigo base en cada pantalla(layout)
+    <FrameLayout
+        android:id="@+id/frame_logo"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logotec2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            >
+
+        </ImageView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+	<!--
+        <Tipo
+		Codigo...
+	>
+	<Tipo>
+	-->
+
+    </LinearLayout>
