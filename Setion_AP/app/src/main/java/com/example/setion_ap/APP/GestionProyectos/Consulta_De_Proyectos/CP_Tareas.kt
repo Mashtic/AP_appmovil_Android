@@ -2,12 +2,14 @@ package com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.setion_ap.Adapters.AdapterGP_ConsultaProyectos
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.Procedures.vProyectoTareas
 import com.example.setion_ap.R
@@ -16,7 +18,8 @@ class CP_Tareas : AppCompatActivity() {
     private lateinit var btnAtras:Button
 
     //LISTA DE TAREAS
-    private lateinit var listaTareas:List<vProyectoTareas>
+    private lateinit var listaTareas:ArrayList<vProyectoTareas>
+
 
     @SuppressLint("MissingInflatedId", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

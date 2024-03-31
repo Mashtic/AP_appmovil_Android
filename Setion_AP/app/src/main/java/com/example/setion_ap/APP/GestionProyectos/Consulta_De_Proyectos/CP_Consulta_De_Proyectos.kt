@@ -27,7 +27,6 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
 
     private lateinit var listView: ListView
 
-
     //CONEXION SQL
     private var connectSql = ConnectSql()
     private lateinit var listaProyectos:List<vProyectos>
@@ -76,12 +75,14 @@ class CP_Consulta_De_Proyectos : AppCompatActivity(), AdapterView.OnItemClickLis
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this, "Elemento seleccionado: " + position, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Elemento seleccionado: " + position, Toast.LENGTH_SHORT).show()
 
         //Pasa a la pantalla de tareas para mostrar las tareas del proyecto que se seleccionó
         val intent = Intent(this, CP_Tareas::class.java)
         intent.putExtra("ProyectoName", listaProyectos.get(position).nombrePry.toString())
         intent.putExtra("proyectId", listaProyectos.get(position).id)
         startActivity(intent)
+
+        println("Lo que se seleciono: "+ mAdapter.getItem(position) + "\n" + "Posicion: " + position)
     }
 }

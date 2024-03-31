@@ -82,8 +82,9 @@
 
         <!--        OPINION: Pienso que para que esto funcione, necesito un SCROLLVIEW-->
         <!--LISTA PROYECTOS-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_proyectos"
+        <ListView
+            android:paddingHorizontal="12dp"
+            android:id="@+id/listView_MIMODIFICARTAREAS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="1dp"

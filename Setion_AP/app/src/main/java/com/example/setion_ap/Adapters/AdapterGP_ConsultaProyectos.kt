@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.setion_ap.R
 
@@ -18,7 +17,7 @@ class AdapterGP_ConsultaProyectos(context: Context, resource: Int, objects: List
             convertView = LayoutInflater.from(context).inflate(R.layout.__item_cp_consulta_proyectos, parent, false)
         }
 
-        val textView: TextView = convertView!!.findViewById(R.id.i__textView)
+        val textView: TextView = convertView!!.findViewById(R.id.i__textView__CP)
 
         // Obtener el elemento en la posición actual
         val item = getItem(position)

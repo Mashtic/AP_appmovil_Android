@@ -5,7 +5,6 @@ import android.widget.Toast
 import java.sql.Date
 import java.sql.SQLException
 import java.sql.Time
-import kotlin.reflect.typeOf
 
 private var connectSql = ConnectSql()
 
@@ -29,7 +28,7 @@ object GP_Procedures {
         }
     }
 
-    fun GET_PROYECTOS(connectSql: ConnectSql): ArrayList<String> {
+    fun GET_PROYECTOS(): ArrayList<String> {
         val datosPrueba = ArrayList<String>()
 
         try {
@@ -49,13 +48,28 @@ object GP_Procedures {
 
         return datosPrueba
     }
+
+    fun UPDATE_ESTADO_TAREA(idEstado: Int, idTarea: Int) {
+        val datosPrueba = ArrayList<String>()
+
+        try {
+            val consulta = connectSql.dbConn()?.prepareStatement("UPDATE ProyectoTareas SET estadoTarea = ? WHERE tareaId = ?")
+            consulta?.setInt(1, idEstado)
+            consulta?.setInt(2, idTarea)
+
+            consulta?.executeUpdate()
+            consulta?.close()
+        } catch (ex: SQLException) {
+            ex.printStackTrace()
+        }
+    }
     /**
      * @param:
      * @return: Una lista con los colaboradores que se encuentran libres, es decir, sin proyecto
      * asignado.
      */
-    fun get_colaboradores_libres(): List<vColaboradores> {
-        val colaboradoresLibres = mutableListOf<vColaboradores>()
+    fun get_colaboradores_libres(): ArrayList<vColaboradores> {
+        val colaboradoresLibres = ArrayList<vColaboradores>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -96,8 +110,8 @@ object GP_Procedures {
      * @param: el identificador del proyecto
      * @return: Una lista con los colaboradores que se encuentran trabajando en un proyecto x.
      */
-    fun get_colaboradores_por_proyecto(proyectoId: Int): List<vColaboradores> {
-        val colaboradores_por_proyecto = mutableListOf<vColaboradores>()
+    fun get_colaboradores_por_proyecto(proyectoId: Int): ArrayList<vColaboradores> {
+        val colaboradores_por_proyecto = ArrayList<vColaboradores>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -141,8 +155,8 @@ object GP_Procedures {
      * @param:
      * @return: Una lista con los colaboradores.
      */
-    fun get_colaboradores(): List<vColaboradores> {
-        val colaboradores = mutableListOf<vColaboradores>()
+    fun get_colaboradores(): ArrayList<vColaboradores> {
+        val colaboradores = ArrayList<vColaboradores>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -153,7 +167,7 @@ object GP_Procedures {
 
             // Procesar los resultados
             if (resultSet != null) {
-                while (resultSet.next()!! == true) {
+                while (resultSet.next()) {
                     val colaborador = vColaboradores(
                         cedula = resultSet.getString("Cédula"),
                         nombreCompleto = resultSet.getString("Nombre completo"),
@@ -184,8 +198,8 @@ object GP_Procedures {
      * @return: Una lista con las reuniones.
      * asignado.
      */
-    fun get_reuniones(): List<vReuniones> {
-        val reuniones = mutableListOf<vReuniones>()
+    fun get_reuniones(): ArrayList<vReuniones> {
+        val reuniones = ArrayList<vReuniones>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -226,8 +240,8 @@ object GP_Procedures {
      * @return: Una lista con los participantes de las reuniones.
      * asignado.
      */
-    fun get_part_reuniones(): List<vParticipantesReuniones> {
-        val partReuniones = mutableListOf<vParticipantesReuniones>()
+    fun get_part_reuniones(): ArrayList<vParticipantesReuniones> {
+        val partReuniones = ArrayList<vParticipantesReuniones>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -239,7 +253,7 @@ object GP_Procedures {
 
             // Procesar los resultados
             if (resultSet != null) {
-                while (resultSet.next()!! == true) {
+                while (resultSet.next()) {
                     val participante = vParticipantesReuniones(
                         idReunion = resultSet.getInt("Id reunión"),
                         temaR = resultSet.getString("Tema reunión"),
@@ -267,8 +281,8 @@ object GP_Procedures {
      * @return: Una lista con las tareas de los proyectos.
      * asignado.
      */
-    fun get_ProyectoTareas(): List<vProyectoTareas> {
-        val tareasProyectos = mutableListOf<vProyectoTareas>()
+    fun get_ProyectoTareas(): ArrayList<vProyectoTareas> {
+        val tareasProyectos = ArrayList<vProyectoTareas>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -312,8 +326,8 @@ object GP_Procedures {
      * @return: Una lista con las tareas de un proyecto en específico.
      * asignado.
      */
-    fun get_ProyectoTareas_fromAProyect(i : Int): List<vProyectoTareas> {
-        val tareasProyectos = mutableListOf<vProyectoTareas>()
+    fun get_ProyectoTareas_fromAProyect(i : Int): ArrayList<vProyectoTareas> {
+        val tareasProyectos = ArrayList<vProyectoTareas>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -360,8 +374,8 @@ object GP_Procedures {
      * @return: Una lista con las tareas de los proyectos.
      * asignado.
      */
-    fun get_Proyectos(): List<vProyectos> {
-        val proyectos = mutableListOf<vProyectos>()
+    fun get_Proyectos(): ArrayList<vProyectos> {
+        val proyectos = ArrayList<vProyectos>()
 
         try {
             // Preparar la llamada al stored procedure
@@ -519,8 +533,8 @@ object GP_Procedures {
      * @return:
      */
     fun get_tareasPorEstadoYEncargado(estadoTareaID: Int?, cedulaEncargado: String?):
-            List<vTareasPorEstadoYEncargado>? {
-        val tareasXEstadoTareaEncargado = mutableListOf<vTareasPorEstadoYEncargado>()
+            ArrayList<vTareasPorEstadoYEncargado>? {
+        val tareasXEstadoTareaEncargado = ArrayList<vTareasPorEstadoYEncargado>()
 
 
         try {
