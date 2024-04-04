@@ -2,6 +2,7 @@ package com.example.setion_ap.Procedures
 
 import android.content.Context
 import android.widget.Toast
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 import java.sql.Date
 import java.sql.SQLException
 import java.sql.Time
@@ -10,9 +11,9 @@ private var connectSql = ConnectSql()
 
 object GP_Procedures {
     fun insertarProyecto(nombre: String, presupuesto: Double, estadoDelProyecto: Int,
-                         descripcion: String, fechaInicio: java.sql.Date, responsable: String, contex:Context){
+                         descripcion: String, fechaInicio: java.sql.Date, responsable: String, recursos: String, contex:Context){
         try {
-            val callStatement = connectSql.dbConn()?.prepareCall("{CALL dbo.sp_InsertarProyecto(?, ?, ?, ?, ?, ?)}")!!
+            val callStatement = connectSql.dbConn()?.prepareCall("{CALL dbo.sp_InsertarProyecto(?, ?, ?, ?, ?, ?, ?)}")!!
 
             callStatement.setString(1, nombre)
             callStatement.setDouble(2, presupuesto)
@@ -20,10 +21,17 @@ object GP_Procedures {
             callStatement.setString(4, descripcion)
             callStatement.setDate(5, fechaInicio)
             callStatement.setString(6, responsable)
+            callStatement.setString(7, recursos)
 
             callStatement.execute()
             Toast.makeText(contex, "Se ha insertado correctamente", Toast.LENGTH_LONG).show()
+
+            val proy = get_Proyectos()
+            for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
+                set_colaboradorProyecto(e.cedula, proy.last().id)
+            }
         } catch (ex: SQLException) {
+            println("errorrrr inserta proy")
             Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
         }
     }
@@ -418,12 +426,12 @@ object GP_Procedures {
      * @param: cedula del colaborador, el identificador del proyecto
      * @return: Agrega el colaborador al proyecto.
      */
-    fun set_colaboradorProyecto(cedula: Int, pryId: Int) {
+    fun set_colaboradorProyecto(cedula: String, pryId: Int) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_AsignarColaboradorAProyecto(?, ?)}")
 
-            callStatement?.setInt(1, cedula)
+            callStatement?.setString(1, cedula)
             callStatement?.setInt(2, pryId)
             callStatement!!?.execute()
             println("Se ha asignado un colaborador al proyecto.")

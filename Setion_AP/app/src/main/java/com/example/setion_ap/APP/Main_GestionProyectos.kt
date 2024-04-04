@@ -30,15 +30,7 @@ class Main_GestionProyectos : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        println("ANTESSSSSSSSSSSSSSSSSSSSSSSSSSSS")
         val list = GP_Procedures.get_colaboradores_libres()
-        println(list.get(0).nombreCompleto)
-        println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        for (e in list){
-            println(e.proyecto + "        Nombre:" +
-            e.nombreCompleto)
-        }
 
         initComponents()
         initListeners()
@@ -81,6 +73,5 @@ class Main_GestionProyectos : AppCompatActivity() {
     }
 
     private fun fun_atras() {
-        println("Hola")
     }
 }

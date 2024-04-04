@@ -88,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="1dp"
-            tools:ignore="MissingConstraints" />
+            android:dividerHeight="5dp"
+            android:divider="@android:color/transparent" />
     </LinearLayout>
 
     <!--BOTON ATRAS-->

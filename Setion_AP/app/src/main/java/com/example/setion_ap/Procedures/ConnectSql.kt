@@ -9,7 +9,7 @@ import java.sql.Time
 import java.util.Date
 
 class ConnectSql {
-    private val ip = "192.168.100.23:1433"
+    private val ip = "192.168.0.3:1433"
     private val db = "GestorProyectos"
     private val username = "dav"
     private val password = "12345"
