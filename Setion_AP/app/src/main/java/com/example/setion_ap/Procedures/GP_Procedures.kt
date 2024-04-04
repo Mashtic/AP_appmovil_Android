@@ -30,6 +30,10 @@ object GP_Procedures {
             for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
                 set_colaboradorProyecto(e.cedula, proy.last().id)
             }
+
+            for (e in GP_VariableGlobales.listaTareasAnadidas){
+                set_tareaProyecto(proy.last().id, e.descripcion, e.storyPoint, 1, "11111111")
+            }
         } catch (ex: SQLException) {
             println("errorrrr inserta proy")
             Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()

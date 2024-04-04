@@ -81,7 +81,10 @@ class GP_CreacionProyectos : AppCompatActivity() {
     private fun initListeners() {
         //BOTONES
         btnCancelar.setOnClickListener { (finish()) }
-        btnGuardar.setOnClickListener { fun_GuardarDatos() }
+        btnGuardar.setOnClickListener {
+            fun_GuardarDatos()
+            finish()
+        }
         btnHistorialDeCambios.setOnClickListener { fun_HistorialDeCambios() }
         btnAnadirTarea.setOnClickListener { fun_AnadirTarea() }
         //IMAGENES
@@ -91,7 +94,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
     private fun fun_AnadirColaborador() {
         intent = Intent(this, GP_AnadirColaborador::class.java)
-        startForResult.launch(intent)
+        startForResultColaboradores.launch(intent)
     }
 
     private fun fun_GuardarDatos() {
@@ -128,11 +131,8 @@ class GP_CreacionProyectos : AppCompatActivity() {
     }
 
     private fun fun_AnadirTarea() {
-        /*println("Entramos al intent")
         intent = Intent(this, GP_AnadirTareas::class.java)
-        startActivity(intent)*/
-
-        convertirStringADate(tvFechaDeInicio.text.toString())
+        startActivity(intent)
     }
 
     private fun fun_AnadirFecha() {
@@ -177,7 +177,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
         }
     }
 
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
+    private val startForResultColaboradores = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
         tvColaboradores.setText("")
         for(e in GP_VariableGlobales.listaColaboradoresAnadidos){
             tvColaboradores.setText(tvColaboradores.text.toString() + e.nombreCompleto + "\n")

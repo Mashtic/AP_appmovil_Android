@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.setion_ap.Procedures.vProyectoTareas
 import com.example.setion_ap.R
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
 class GP_AnadirTareas : AppCompatActivity() {
     //EDITTEXT
@@ -60,9 +63,31 @@ class GP_AnadirTareas : AppCompatActivity() {
 
     private fun fun_anadir() {
         if (edNombre.text.isNotEmpty() && edDescripcion.text.isNotEmpty() && edStoryPoints.text.isNotEmpty()){
-            println("Estamos")
+            val tarea = vProyectoTareas(
+                idProyecto = 1,
+                nombrePry = "Proyecto",
+                tareaId = 1,
+                descripcion = edDescripcion.text.toString(),
+                storyPoint = edStoryPoints.text.toString().toInt(),
+                nombEstadoTarea = "En proceso",
+                nombEnc = edNombre.text.toString()
+            )
+            GP_VariableGlobales.listaTareasAnadidas.add(tarea)
+
+            fun_anadirEnListaTareas()
+            edNombre.setText("")
+            edDescripcion.setText("")
+            edStoryPoints.setText("")
+            Toast.makeText(this, "Tarea añadida", Toast.LENGTH_SHORT).show()
         }else{
-            edNombre.setText("El espacio debe estar lleno")
+            Toast.makeText(this, "No se añadió", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun fun_anadirEnListaTareas() {
+        tvTareasAñadidas.setText("")
+        for(e in GP_VariableGlobales.listaTareasAnadidas){
+            tvTareasAñadidas.setText(tvTareasAñadidas.text.toString() + e.descripcion + "\n")
         }
     }
 
