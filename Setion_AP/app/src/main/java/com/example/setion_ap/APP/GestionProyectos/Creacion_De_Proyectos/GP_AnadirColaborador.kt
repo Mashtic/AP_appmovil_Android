@@ -31,7 +31,6 @@ class GP_AnadirColaborador : AppCompatActivity(), AdapterView.OnItemClickListene
 
     //LISTA COLABORADORES
     private lateinit var listColaradoresLibres:ArrayList<vColaboradores>
-    private var inicio = true
 
     //LIST VIEW
     private lateinit var listView:ListView
@@ -66,12 +65,9 @@ class GP_AnadirColaborador : AppCompatActivity(), AdapterView.OnItemClickListene
         btnGuardar.setOnClickListener{finish()}
         btnCancelar.setOnClickListener{
             GP_VariableGlobales.listaColaboradoresAnadidos.clear()
-            fun_Guardar()}
+            finish()
+        }
         listView.setOnItemClickListener(this)
-    }
-
-    private fun fun_Guardar() {
-        finish()
     }
 
     //FUNCIONES
@@ -105,10 +101,8 @@ class GP_AnadirColaborador : AppCompatActivity(), AdapterView.OnItemClickListene
                         break
                     }
                 }
-
             }
         }
-        println(GP_VariableGlobales.listaColaboradoresAnadidos.size)
     }
 
     //LISTENER

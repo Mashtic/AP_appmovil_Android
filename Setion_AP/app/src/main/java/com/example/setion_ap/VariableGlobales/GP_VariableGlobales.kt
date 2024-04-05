@@ -7,5 +7,17 @@ class GP_VariableGlobales {
     companion object {
         var listaColaboradoresAnadidos: ArrayList<vColaboradores> = ArrayList()
         var listaTareasAnadidas: ArrayList<vProyectoTareas> = ArrayList()
+
+        fun get_msjCorreoPorDefault(medio:String, fecha:String, hora:String, nivelImportancia:String):String{
+            val msjCorreoPorDefault: String = "Buenas,\n" +
+                    "Por este medio se les comparte la información con respecto a la próxima " +
+                    "reunión vitual, por lo tanto la informmación es la siguiente:\n" +
+                    "Medio: " + medio + "\n"+
+                    "Fecha: " + fecha + "\n"+
+                    "Hora: " + hora +  "\n" +
+                    "Nivel de importancia: " + nivelImportancia + "\n" +
+                    "Saludos."
+            return msjCorreoPorDefault
+        }
     }
 }

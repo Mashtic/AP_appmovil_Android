@@ -4,8 +4,20 @@ import android.content.Context
 import android.widget.Toast
 import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 import java.sql.Date
+import java.sql.PreparedStatement
+import java.sql.ResultSet
 import java.sql.SQLException
 import java.sql.Time
+import java.util.Properties
+import javax.mail.Authenticator
+import javax.mail.PasswordAuthentication
+import javax.mail.Message
+import javax.mail.MessagingException
+import javax.mail.Session
+import javax.mail.internet.AddressException
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
+import javax.mail.Transport
 
 private var connectSql = ConnectSql()
 
@@ -244,6 +256,45 @@ object GP_Procedures {
                 println("Error:::$e2")
             }
         }
+        return reuniones
+    }
+
+    fun get_reuniones_con_id(): ArrayList<vReuniones> {
+        val reuniones = ArrayList<vReuniones>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement: PreparedStatement? = connectSql.dbConn()?.prepareStatement("SELECT id, temaReunion FROM Reuniones")
+
+            // Verificar que el statement no sea nulo
+            statement?.let {
+                // Ejecutar la consulta y obtener el resultado
+                val resultSet: ResultSet = statement.executeQuery()
+
+                // Recorrer el resultado y agregar cada reunión a la lista
+                while (resultSet.next()) {
+                    val id = resultSet.getInt("id")
+                    val temaReunion = resultSet.getString("temaReunion")
+                    val reunion = vReuniones(
+                        idReunion = id,
+                        nombre = "",
+                        fecha = java.util.Date(),
+                        hora = Time.valueOf("12:00:00"),
+                        temaReunion = temaReunion,
+                        medioReunion = "zoom"
+                    )
+                    reuniones.add(reunion)
+                }
+
+                // Cerrar el ResultSet y el PreparedStatement
+                resultSet.close()
+                statement.close()
+            }
+        } catch (e: Exception) {
+            println(e.message)
+            // Manejar la excepción según tus necesidades
+        }
+
         return reuniones
     }
 
@@ -607,7 +658,11 @@ object GP_Procedures {
             callStatement?.setString(3, temaReunion)
             callStatement?.setString(4, medioReunion)
             callStatement!!.execute()
-            println("Crear reunion.")
+
+            val reuniones = get_reuniones_con_id().last()
+            for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
+                set_agregarParticipanteReunion(reuniones.idReunion, e.cedula)
+            }
 
         } catch (ex: SQLException) {
             println("Error: $ex")
@@ -788,7 +843,42 @@ object GP_Procedures {
         return esValido
     }
 
-
+    fun buttonSendEmail() {
+        try {
+            val stringSenderEmail = "proyectoap26@gmail.com"
+            val stringReceiverEmail = "rodolfoide69@estudiantec.cr"
+            val stringPasswordSenderEmail = "vshikiqjajqoaolh"
+            val stringHost = "smtp.gmail.com"
+            val properties: Properties = System.getProperties()
+            properties.put("mail.smtp.host", stringHost)
+            properties.put("mail.smtp.port", "465")
+            properties.put("mail.smtp.ssl.enable", "true")
+            properties.put("mail.smtp.auth", "true")
+            val session: Session =
+                Session.getInstance(properties, object : Authenticator() {
+                    override fun getPasswordAuthentication(): PasswordAuthentication? {
+                        return PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail)
+                    }
+                })
+            val mimeMessage = MimeMessage(session)
+            mimeMessage.addRecipient(Message.RecipientType.TO, InternetAddress(stringReceiverEmail))
+            mimeMessage.subject = "Subject: Android App email"
+            mimeMessage.setText("Tomela David, \n\nProgrammer World has sent you this 2nd email. \n\n Cheers!\nProgrammer World")
+            val thread = Thread {
+                try {
+                    Transport.send(mimeMessage)
+                } catch (e: MessagingException) {
+                    e.printStackTrace()
+                }
+            }
+            thread.start()
+        } catch (e: AddressException) {
+            e.printStackTrace()
+        } catch (e: MessagingException) {
+            e.printStackTrace()
+        }
+        println("Email sent SUCCESSFULLY!!!")
+    }
 
 
 }
