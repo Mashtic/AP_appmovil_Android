@@ -10,4 +10,6 @@
     <color name="btn_gray_selected">#9A9393</color>
 
     <color name="screen_background">#EDEDED</color>
+    <color name="transparent_orange">#FF9800</color>
+    <color name="transparent_blue">#3F51B5</color>
 </resources>
