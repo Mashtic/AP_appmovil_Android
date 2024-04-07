@@ -109,7 +109,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
             if(edEstadoDeProyecto.text.toString().toInt()<LIM_INF_ESTADOPROYECT
                 || edEstadoDeProyecto.text.toString().toInt()>LIM_SUP_ESTADOPROYECT) {
-                edEstadoDeProyecto.setText("2")
+                edEstadoDeProyecto.setText("4")
             }
 
             GP_Procedures.insertarProyecto(edNombre.text.toString(),

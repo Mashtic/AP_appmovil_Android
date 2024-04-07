@@ -648,7 +648,7 @@ object GP_Procedures {
      * encargado
      * @return: Agrega una tarea al proyecto
      */
-    fun set_crearReunion(fecha:Date, hora: Time, temaReunion: String, medioReunion: String) {
+    fun set_crearReunion(fecha:Date, hora: Time, temaReunion: String, medioReunion: String, contex: Context) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_CrearReunion(?, ?, ?, ?)}")
@@ -661,11 +661,14 @@ object GP_Procedures {
 
             val reuniones = get_reuniones_con_id().last()
             for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
+                println(e.nombreCompleto + " - " + e.cedula)
                 set_agregarParticipanteReunion(reuniones.idReunion, e.cedula)
             }
 
+            Toast.makeText(contex, "Reunión agendada", Toast.LENGTH_SHORT).show()
         } catch (ex: SQLException) {
             println("Error: $ex")
+            Toast.makeText(contex, "Error de agenda", Toast.LENGTH_SHORT).show()
             //Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
         }
     }
@@ -803,6 +806,7 @@ object GP_Procedures {
 
             callStatement?.setInt(1, reunionId)
             callStatement?.setString(2, cedParticipante)
+            callStatement?.execute()
             println("Se ha agregado un nuevo participante en la reunión.")
 
         } catch (e: SQLException) {

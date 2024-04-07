@@ -76,7 +76,10 @@ class CR_NuevaReunion : AppCompatActivity() {
             GP_Procedures.set_crearReunion(convertirStringADate(tvFecha.text.toString()),
                 Time.valueOf("15:00:00"),
                 edTema.text.toString(),
-                edMedio.text.toString())
+                edMedio.text.toString(),
+                this
+            )
+            finish()
         }else{
             Toast.makeText(this, "Espacios vacíos", Toast.LENGTH_SHORT).show()
         }
