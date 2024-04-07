@@ -9,10 +9,10 @@ import java.sql.Time
 import java.util.Date
 
 class ConnectSql {
-    private val ip = "192.168.100.23:1433"
+    private val ip = "192.168.100.6:1433"//"192.168.100.23:1433"//192.168.100.6:1433
     private val db = "GestorProyectos"
-    private val username = "dav"
-    private val password = "12345"
+    private val username = "usuarioKotlin"
+    private val password = "Titoblade1"
 
     fun dbConn(): Connection? {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()

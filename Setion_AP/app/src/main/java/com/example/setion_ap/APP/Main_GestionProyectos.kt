@@ -81,6 +81,7 @@ class Main_GestionProyectos : AppCompatActivity() {
     }
 
     private fun fun_atras() {
-        println("Hola")
+        intent = Intent(this, Main_Evaluaciones::class.java)
+        startActivity(intent)
     }
 }

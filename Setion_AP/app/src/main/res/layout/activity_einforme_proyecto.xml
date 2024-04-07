@@ -5,15 +5,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".APP.Evaluaciones.BurndownChart.E_BC_Proyecto">
+    tools:context=".APP.Evaluaciones.Informes.E_InformeProyecto">
+
     <FrameLayout
-        android:id="@+id/frame_logo_BP"
+        android:id="@+id/frame_logo_IP"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/img_logoTec_BP"
+            android:id="@+id/img_logoTec_IP"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/logotec2"
@@ -31,18 +32,18 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo_BP"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_IP"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
         <com.echo.holographlibrary.BarGraph
-            android:id="@+id/grafica_BP"
+            android:id="@+id/grafica_IP"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_margin="16dp"/>
 
         <Button
-            android:id="@+id/btnAtras_BP"
+            android:id="@+id/btnAtras_IP"
             android:layout_width="202dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -52,5 +53,7 @@
             android:text="Atras">
 
         </Button>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
