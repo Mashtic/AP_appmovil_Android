@@ -87,31 +87,30 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
-            <EditText
-                android:inputType="number"
+
+            <TextView
                 android:id="@+id/edColaboradores_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Colaboradores"
-                android:background="@drawable/style_border_edittext">
-            </EditText>
+                android:layout_height="wrap_content"
+                android:background="@drawable/style_border_edittext"
+                android:hint="Colaboradores"/>
 
             <ImageView
-                android:layout_gravity="end"
                 android:id="@+id/imgLUPA_GPCREACIONPROYECTOS"
                 android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/lupa"
-                android:layout_marginEnd="10dp"/>
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:src="@drawable/lupa" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -119,8 +118,8 @@
                 android:inputType="number"
                 android:id="@+id/edEstadoDelProyecto_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Estado del proyecto(0:No activo, 1:Activo)"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_ListaDeEstadosDelProyecto"
                 android:background="@drawable/style_border_edittext">
             </EditText>
         </androidx.cardview.widget.CardView>
@@ -142,7 +141,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -151,7 +150,7 @@
                 android:id="@+id/tvFechaDeInicio_GPCREACIONPROYECTOS"
                 android:hint="Fecha de inicio"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="date"
                 android:background="@drawable/style_border_edittext"/>
@@ -166,7 +165,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -174,7 +173,7 @@
                 android:inputType="number"
                 android:id="@+id/edResponsable_GPCREACIONPROYECTOS"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Responsable"
                 android:background="@drawable/style_border_edittext">
             </EditText>

@@ -76,14 +76,22 @@
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
-            <EditText
-                android:id="@+id/edFecha_CRCREARREUNION"
+            <TextView
+                android:id="@+id/tvFecha_CRCREARREUNION"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Fecha"
                 android:textSize="18dp"
                 android:background="@drawable/style_border_edittext">
-            </EditText>
+            </TextView>
+
+            <ImageView
+                android:layout_gravity="end"
+                android:id="@+id/imgCALENDAR_CRCREARREUNION"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_calendar_month_24"
+                android:layout_marginEnd="10dp"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -104,14 +112,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <TextView
-                android:id="@+id/edColaboradores_CRCREARREUNION"
+                android:id="@+id/tvColaboradores_CRCREARREUNION"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Colaboradores"
                 android:textSize="18dp"
                 android:background="@drawable/style_border_edittext">
@@ -121,17 +129,17 @@
                 android:layout_gravity="end"
                 android:id="@+id/imgLUPA_CRCREARREUNION"
                 android:layout_width="35dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:src="@drawable/lupa"
                 android:layout_marginEnd="10dp"/>
         </androidx.cardview.widget.CardView>
         
         <Button
             android:layout_marginTop="40dp"
-            android:id="@+id/btnAnadir_CRCREARREUNION"
+            android:id="@+id/btnEditarCorreo_CRCREARREUNION"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Añadir"
+            android:text="Editar correo"
             android:layout_gravity="center"
             android:backgroundTint="@color/btn_gray"/>
 

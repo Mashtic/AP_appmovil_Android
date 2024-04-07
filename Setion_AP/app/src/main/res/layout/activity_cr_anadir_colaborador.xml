@@ -83,12 +83,12 @@
 
         <!--        OPINION: Pienso que para que esto funcione, necesito un SCROLLVIEW-->
         <!--LISTA PROYECTOS-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_proyectos"
+        <ListView
+            android:id="@+id/listView_CRANADIRCOLABORADOR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="1dp"
-            tools:ignore="MissingConstraints" />
+            android:dividerHeight="5dp"
+            android:divider="@android:color/transparent"/>
     </LinearLayout>
 
     <!--BOTON ATRAS-->

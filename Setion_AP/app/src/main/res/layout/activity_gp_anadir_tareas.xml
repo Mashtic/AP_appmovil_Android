@@ -56,10 +56,9 @@
                 <EditText
                     android:id="@+id/edNombre_GPANADIRTAREAS"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/style_border_edittext"
                     android:hint="Nombre">
-
                 </EditText>
             </androidx.cardview.widget.CardView>
 
@@ -74,7 +73,7 @@
                 <EditText
                     android:id="@+id/edDescripcion_GPANADIRTAREAS"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/style_border_edittext"
                     android:hint="Descripción">
 
@@ -92,9 +91,10 @@
                 <EditText
                     android:id="@+id/edStoryPoints_GPANADIRTAREAS"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/style_border_edittext"
-                    android:hint="Story points">
+                    android:hint="Story points"
+                    android:inputType="number">
 
                 </EditText>
             </androidx.cardview.widget.CardView>
@@ -130,7 +130,6 @@
                 android:backgroundTint="#BDBABA"
                 android:layout_marginHorizontal="10dp">
                 <TextView
-
                     android:id="@+id/tvTareasAñadidas_GPANADIRTAREAS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

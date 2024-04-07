@@ -50,6 +50,7 @@ data class vColaboradores(
  * Clase que define las reuniones
  */
 data class vReuniones(
+    val idReunion: Int = 1,
     val nombre: String,
     val fecha: Date,
     val hora: Time,

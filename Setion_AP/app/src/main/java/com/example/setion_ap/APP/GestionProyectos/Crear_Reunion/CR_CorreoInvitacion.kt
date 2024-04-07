@@ -9,7 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
 class CR_CorreoInvitacion : AppCompatActivity() {
     //BUTTONS
@@ -26,8 +28,17 @@ class CR_CorreoInvitacion : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val edTema: String = intent.extras?.getString("edTema").orEmpty()
+        val tvFecha: String = intent.extras?.getString("tvFecha").orEmpty()
+        val edMedio: String = intent.extras?.getString("edMedio").orEmpty()
+
         initComponents()
         initListeners()
+        fun_correoPorDefault(edTema, edMedio, tvFecha)
+    }
+
+    private fun fun_correoPorDefault(edTema : String, edMedio : String, tvFecha : String) {
+        edCorreo.setText(GP_VariableGlobales.get_msjCorreoPorDefault(edMedio, tvFecha, "12:00pm", "Alto"))
     }
 
     private fun initComponents() {

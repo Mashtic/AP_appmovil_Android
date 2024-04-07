@@ -72,7 +72,7 @@ class Main_GestionProyectos : AppCompatActivity() {
         btnCreacionDeProyectos.setOnClickListener{fun_crecionDeProyectos()}
         btnConsultaDeProyectos.setOnClickListener{fun_consultaDeProyectos()}
         btnModificacionDeInformacion.setOnClickListener{fun_modificacionDeInformacion()}
-        btnCreacionDeReuniones.setOnClickListener{fun_crecionDeReuniones()}
+        btnCreacionDeReuniones.setOnClickListener{ Companion.fun_crecionDeReuniones(this) }
         btnAtras.setOnClickListener{fun_atras()}
     }
 
@@ -91,12 +91,14 @@ class Main_GestionProyectos : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun fun_crecionDeReuniones() {
-        intent = Intent(this, CR_NuevaReunion::class.java)
-        startActivity(intent)
-    }
-
     private fun fun_atras() {
         println("Hola")
+    }
+
+    companion object {
+        private fun fun_crecionDeReuniones(mainGestionproyectos: Main_GestionProyectos) {
+            mainGestionproyectos.intent = Intent(mainGestionproyectos, CR_NuevaReunion::class.java)
+            mainGestionproyectos.startActivity(mainGestionproyectos.intent)
+        }
     }
 }

@@ -2,17 +2,30 @@ package com.example.setion_ap.Procedures
 
 import android.content.Context
 import android.widget.Toast
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 import java.sql.Date
+import java.sql.PreparedStatement
+import java.sql.ResultSet
 import java.sql.SQLException
 import java.sql.Time
+import java.util.Properties
+import javax.mail.Authenticator
+import javax.mail.PasswordAuthentication
+import javax.mail.Message
+import javax.mail.MessagingException
+import javax.mail.Session
+import javax.mail.internet.AddressException
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
+import javax.mail.Transport
 
 private var connectSql = ConnectSql()
 
 object GP_Procedures {
     fun insertarProyecto(nombre: String, presupuesto: Double, estadoDelProyecto: Int,
-                         descripcion: String, fechaInicio: java.sql.Date, responsable: String, contex:Context){
+                         descripcion: String, fechaInicio: java.sql.Date, responsable: String, recursos: String, contex:Context){
         try {
-            val callStatement = connectSql.dbConn()?.prepareCall("{CALL dbo.sp_InsertarProyecto(?, ?, ?, ?, ?, ?)}")!!
+            val callStatement = connectSql.dbConn()?.prepareCall("{CALL dbo.sp_InsertarProyecto(?, ?, ?, ?, ?, ?, ?)}")!!
 
             callStatement.setString(1, nombre)
             callStatement.setDouble(2, presupuesto)
@@ -20,10 +33,21 @@ object GP_Procedures {
             callStatement.setString(4, descripcion)
             callStatement.setDate(5, fechaInicio)
             callStatement.setString(6, responsable)
+            callStatement.setString(7, recursos)
 
             callStatement.execute()
             Toast.makeText(contex, "Se ha insertado correctamente", Toast.LENGTH_LONG).show()
+
+            val proy = get_Proyectos()
+            for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
+                set_colaboradorProyecto(e.cedula, proy.last().id)
+            }
+
+            for (e in GP_VariableGlobales.listaTareasAnadidas){
+                set_tareaProyecto(proy.last().id, e.descripcion, e.storyPoint, 1, "11111111")
+            }
         } catch (ex: SQLException) {
+            println("errorrrr inserta proy")
             Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
         }
     }
@@ -235,6 +259,45 @@ object GP_Procedures {
         return reuniones
     }
 
+    fun get_reuniones_con_id(): ArrayList<vReuniones> {
+        val reuniones = ArrayList<vReuniones>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement: PreparedStatement? = connectSql.dbConn()?.prepareStatement("SELECT id, temaReunion FROM Reuniones")
+
+            // Verificar que el statement no sea nulo
+            statement?.let {
+                // Ejecutar la consulta y obtener el resultado
+                val resultSet: ResultSet = statement.executeQuery()
+
+                // Recorrer el resultado y agregar cada reunión a la lista
+                while (resultSet.next()) {
+                    val id = resultSet.getInt("id")
+                    val temaReunion = resultSet.getString("temaReunion")
+                    val reunion = vReuniones(
+                        idReunion = id,
+                        nombre = "",
+                        fecha = java.util.Date(),
+                        hora = Time.valueOf("12:00:00"),
+                        temaReunion = temaReunion,
+                        medioReunion = "zoom"
+                    )
+                    reuniones.add(reunion)
+                }
+
+                // Cerrar el ResultSet y el PreparedStatement
+                resultSet.close()
+                statement.close()
+            }
+        } catch (e: Exception) {
+            println(e.message)
+            // Manejar la excepción según tus necesidades
+        }
+
+        return reuniones
+    }
+
     /**
      * @param:
      * @return: Una lista con los participantes de las reuniones.
@@ -418,12 +481,12 @@ object GP_Procedures {
      * @param: cedula del colaborador, el identificador del proyecto
      * @return: Agrega el colaborador al proyecto.
      */
-    fun set_colaboradorProyecto(cedula: Int, pryId: Int) {
+    fun set_colaboradorProyecto(cedula: String, pryId: Int) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_AsignarColaboradorAProyecto(?, ?)}")
 
-            callStatement?.setInt(1, cedula)
+            callStatement?.setString(1, cedula)
             callStatement?.setInt(2, pryId)
             callStatement!!?.execute()
             println("Se ha asignado un colaborador al proyecto.")
@@ -585,7 +648,7 @@ object GP_Procedures {
      * encargado
      * @return: Agrega una tarea al proyecto
      */
-    fun set_crearReunion(fecha:Date, hora: Time, temaReunion: String, medioReunion: String) {
+    fun set_crearReunion(fecha:Date, hora: Time, temaReunion: String, medioReunion: String, contex: Context) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_CrearReunion(?, ?, ?, ?)}")
@@ -595,10 +658,17 @@ object GP_Procedures {
             callStatement?.setString(3, temaReunion)
             callStatement?.setString(4, medioReunion)
             callStatement!!.execute()
-            println("Crear reunion.")
 
+            val reuniones = get_reuniones_con_id().last()
+            for (e in GP_VariableGlobales.listaColaboradoresAnadidos){
+                println(e.nombreCompleto + " - " + e.cedula)
+                set_agregarParticipanteReunion(reuniones.idReunion, e.cedula)
+            }
+
+            Toast.makeText(contex, "Reunión agendada", Toast.LENGTH_SHORT).show()
         } catch (ex: SQLException) {
             println("Error: $ex")
+            Toast.makeText(contex, "Error de agenda", Toast.LENGTH_SHORT).show()
             //Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
         }
     }
@@ -736,6 +806,7 @@ object GP_Procedures {
 
             callStatement?.setInt(1, reunionId)
             callStatement?.setString(2, cedParticipante)
+            callStatement?.execute()
             println("Se ha agregado un nuevo participante en la reunión.")
 
         } catch (e: SQLException) {
@@ -776,7 +847,42 @@ object GP_Procedures {
         return esValido
     }
 
-
+    fun buttonSendEmail() {
+        try {
+            val stringSenderEmail = "proyectoap26@gmail.com"
+            val stringReceiverEmail = "rodolfoide69@estudiantec.cr"
+            val stringPasswordSenderEmail = "vshikiqjajqoaolh"
+            val stringHost = "smtp.gmail.com"
+            val properties: Properties = System.getProperties()
+            properties.put("mail.smtp.host", stringHost)
+            properties.put("mail.smtp.port", "465")
+            properties.put("mail.smtp.ssl.enable", "true")
+            properties.put("mail.smtp.auth", "true")
+            val session: Session =
+                Session.getInstance(properties, object : Authenticator() {
+                    override fun getPasswordAuthentication(): PasswordAuthentication? {
+                        return PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail)
+                    }
+                })
+            val mimeMessage = MimeMessage(session)
+            mimeMessage.addRecipient(Message.RecipientType.TO, InternetAddress(stringReceiverEmail))
+            mimeMessage.subject = "Subject: Android App email"
+            mimeMessage.setText("Tomela David, \n\nProgrammer World has sent you this 2nd email. \n\n Cheers!\nProgrammer World")
+            val thread = Thread {
+                try {
+                    Transport.send(mimeMessage)
+                } catch (e: MessagingException) {
+                    e.printStackTrace()
+                }
+            }
+            thread.start()
+        } catch (e: AddressException) {
+            e.printStackTrace()
+        } catch (e: MessagingException) {
+            e.printStackTrace()
+        }
+        println("Email sent SUCCESSFULLY!!!")
+    }
 
 
 }
