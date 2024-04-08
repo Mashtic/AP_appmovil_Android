@@ -8,7 +8,9 @@ import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 import androidx.work.CoroutineWorker
 
-
+/**
+ * Esto permite que se esté revisando constantemente si hay notificaciones, esta es de tareas de pry.
+ */
 class NotificationWorker(
     appContext: Context,
     workerParams: WorkerParameters
@@ -23,6 +25,9 @@ class NotificationWorker(
     }
 }
 
+/**
+ * Esto permite que se esté revisando constantemente si hay notificaciones, esta es de reuniones.
+ */
 class NotifyMeetingWorker(
     appContext: Context,
     workerParams: WorkerParameters
@@ -36,7 +41,9 @@ class NotifyMeetingWorker(
     }
 }
 
-
+/**
+ * La configuración del correo
+ */
 object EmailUtils {
     fun sendEmail(recipients: List<String?>, subject: String, content: String) {
         val session = Session.getInstance(emailProperties(), object : Authenticator() {
@@ -59,6 +66,9 @@ object EmailUtils {
         }
     }
 
+    /**
+     * Propiedades del email
+     */
     private fun emailProperties(): Properties {
         return Properties().apply {
             put("mail.smtp.host", "smtp.gmail.com")

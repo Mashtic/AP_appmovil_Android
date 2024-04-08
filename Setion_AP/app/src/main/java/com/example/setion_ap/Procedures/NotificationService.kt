@@ -6,23 +6,32 @@ import java.sql.SQLException
 import java.sql.Time
 
 
+/**
+ * Clase para encargarse de notificar.
+ */
 class NotificationService {
+
+    /**
+     * Esta funcion es la principal para enviar correos sobre las tareas de los proyectos
+     */
     fun checkAndNotify() {
-        println("Estoy escuchando.")
-        val pendingEvents = getPendingEventsFromDatabase()
+        val pendingEvents = getPendingEventsFromDatabase() // Obtiene las notif pendientes en la BD
         pendingEvents.forEach { evento ->
-            val emails = getEmailsForProject(evento.proyectoID)
+            val emails = getEmailsForProject(evento.proyectoID)  //Obtiene los correos de los colab
             if (emails.isNotEmpty()) {
-                EmailUtils.sendEmail(
-                    emails,
-                    "Notificación del Proyecto ${evento.proyectoID}",
-                    evento.descripcionEvento
+                EmailUtils.sendEmail( //Llama la función de enviar email y pasa parametros
+                    emails, // Los correos
+                    "Notificación del Proyecto ${evento.proyectoID}", // El tema del correo
+                    evento.descripcionEvento // Descripción
                 )
-                markEventAsNotified(evento.id)
+                markEventAsNotified(evento.id) // Se setea en la base de datos que ya se ha notificado
             }
         }
     }
 
+    /**
+     * Obtiene los eventos que no se han notificado
+     */
     private fun getPendingEventsFromDatabase(): List<Evento> {
         val eventos = mutableListOf<Evento>()
 
@@ -46,6 +55,11 @@ class NotificationService {
         return eventos
     }
 
+    /**
+     * Obtiene los emails de los colaboradores del proyecto por notificar
+     * @param: El id del proyecto
+     * @return: Una lista con los correos
+     */
     private fun getEmailsForProject(proyectoID: Int?): List<String> {
         val emails = mutableListOf<String>()
         val statement = ConnectSql().dbConn()?.prepareStatement("SELECT email FROM Colaboradores WHERE proyecto = ?")
@@ -74,6 +88,11 @@ class NotificationService {
         return emails
     }
 
+    /**
+     * Actualiza los eventos procesados como notificados.
+     * @param: El id del evento
+     * @return: Null
+     */
     private fun markEventAsNotified(eventoID: Int) {
         val statement = ConnectSql().dbConn()?.prepareStatement("UPDATE EventosParaNotificar SET notificado = 1 WHERE id = ?")
 
@@ -91,19 +110,22 @@ class NotificationService {
         ConnectSql().dbConn()?.close()
     }
 
+
+    /**
+     * Esta funcion es la principal para enviar correos sobre las reuniones.
+     */
     fun notifyMeetingParticipants() {
-        val eventsToNotify = getMeetingEventsFromDatabase()
-
+        val eventsToNotify = getMeetingEventsFromDatabase() // eventos por notificar
+        //Itera sobre cada uno
         eventsToNotify.forEach { event ->
-
-            val email = getEmailForParticipant(event.participante.toString())
+            val email = getEmailForParticipant(event.participante.toString()) //Obtiene el email del colaborador
             if (email != null) {
-                val meetingDetails = getMeetingDetails(event.reunionID)
+                val meetingDetails = getMeetingDetails(event.reunionID) //Obtiene los detalles de la reunión
                 if (meetingDetails != null) {
-                    EmailUtils.sendEmail(
+                    EmailUtils.sendEmail( //Se llama la función sendEmail con sus parametros
                         listOf(email),
                         "Invitación a la reunión: ${meetingDetails.temaReunion}",
-                        "Estimado colaborador, está invitado a una reunión sobre ${meetingDetails.temaReunion} que se realizará el ${meetingDetails.fecha} a las ${meetingDetails.hora} por ${meetingDetails.medioReunion}."
+                        "Estimado colaborador, \n\nHa sido invitado a una reunión acerca de: ${meetingDetails.temaReunion} \nFecha: ${meetingDetails.fecha} \nHora: ${meetingDetails.hora} \nMedio: ${meetingDetails.medioReunion}."
                     )
                 }
                 markEventAsNotified(event.id)
@@ -111,6 +133,9 @@ class NotificationService {
         }
     }
 
+    /**
+     * Función para obtener los eventos de las reuniones
+     */
     private fun getMeetingEventsFromDatabase(): List<Evento> {
         val eventos = mutableListOf<Evento>()
         val statement = ConnectSql().dbConn()?.prepareStatement("""
@@ -145,6 +170,10 @@ class NotificationService {
         return eventos
     }
 
+    /**
+     * Obtiene los emails de los participantes
+     * (Función repetida)
+     */
     private fun getEmailForParticipant(participante: String): String? {
         val statement = ConnectSql().dbConn()?.prepareStatement("SELECT email FROM Colaboradores WHERE cedula = ?")
         if (statement != null) {
@@ -170,6 +199,9 @@ class NotificationService {
         return email
     }
 
+    /**
+     * Obtiene los detalles de las reuniones
+     */
     private fun getMeetingDetails(reunionID: Int?): Reunion? {
         val statement = ConnectSql().dbConn()?.prepareStatement("SELECT * FROM Reuniones WHERE id = ?")
         if (reunionID != null) {
@@ -203,110 +235,11 @@ class NotificationService {
 
         return reunion
     }
-
-    /**
-     * ---------------------------------------------------------------------------------------------
-     */
-/*
-    fun notifyMeetingParticipants() {
-        val statement = ConnectSql().dbConn()?.prepareStatement("""
-                SELECT rp.reunionID, rp.participante, r.fecha, r.hora, r.temaReunion, r.medioReunion
-                FROM ReunionesParticipantes rp
-                JOIN Reuniones r ON rp.reunionID = r.id
-                WHERE NOT EXISTS (
-                    SELECT 1 FROM EventosParaNotificar e
-                    WHERE e.reunionID = rp.reunionID AND e.participante = rp.participante
-                )
-            """.trimIndent())
-
-        val resultSet = statement?.executeQuery()
-        if (resultSet != null) {
-            while (resultSet.next()) {
-                val reunionDetails = extractReunionDetails(resultSet)
-                val participantEmail = getEmailForParticipant(resultSet.getString("participante"))
-                val message = buildEmailMessage(reunionDetails)
-
-                EmailUtils.sendEmail(listOf(participantEmail), "Invitación a la reunión: ${reunionDetails.temaReunion}", message)
-
-                insertNotificationEvent(reunionDetails, resultSet.getString("participante"))
-            }
-        }
-
-        if (resultSet != null) {
-            resultSet.close()
-        }
-        if (statement != null) {
-            statement.close()
-        }
-        ConnectSql().dbConn()?.close()
-    }
-
-    private fun getEmailForParticipant(participante: String): String? {
-        val query = "SELECT email FROM Colaboradores WHERE cedula = ?"
-        val statement = ConnectSql().dbConn()?.prepareStatement(query)
-
-        statement?.setString(1, participante)
-
-        var email: String? = null
-        val resultSet = statement?.executeQuery()
-        if (resultSet != null) {
-            if (resultSet.next()) {
-                email = resultSet.getString("email")
-            } else {
-                println("No se encontró un email para el participante con cédula: $participante")
-            }
-        }
-
-        if (resultSet != null) {
-            resultSet.close()
-        }
-        if (statement != null) {
-            statement.close()
-        }
-        ConnectSql().dbConn()?.close()
-
-        return email
-    }
-
-    private fun extractReunionDetails(resultSet: ResultSet): ReunionDetails {
-        return ReunionDetails(
-            reunionID = resultSet.getInt("reunionID"),
-            fecha = resultSet.getDate("fecha"),
-            hora = resultSet.getTime("hora"),
-            temaReunion = resultSet.getString("temaReunion"),
-            medioReunion = resultSet.getString("medioReunion")
-        )
-    }
-
-    private fun buildEmailMessage(reunionDetails: ReunionDetails): String {
-        return "Detalles de la reunión: Fecha: ${reunionDetails.fecha}, Hora: ${reunionDetails.hora}, Tema: ${reunionDetails.temaReunion}, Medio: ${reunionDetails.medioReunion}."
-    }
-    private fun insertNotificationEvent(reunionDetails: ReunionDetails, participante: String) {
-        val statement = ConnectSql().dbConn()?.prepareStatement("""
-            INSERT INTO EventosParaNotificar (tipoEvento, reunionID, participante, descripcionEvento)
-            VALUES ('Invitación a Reunión', ?, ?, ?)
-        """.trimIndent())
-
-        if (statement != null) {
-            statement.setInt(1, reunionDetails.reunionID)
-        }
-        if (statement != null) {
-            statement.setString(2, participante)
-        }
-        if (statement != null) {
-            statement.setString(3, buildEmailMessage(reunionDetails))
-        }
-
-        if (statement != null) {
-            statement.executeUpdate()
-        }
-        if (statement != null) {
-            statement.close()
-        }
-    } */
 }
 
-
+/**
+ * Estructura de la reunión
+ */
 data class Reunion(
     val id: Int,
     val fecha: Date,
@@ -315,6 +248,9 @@ data class Reunion(
     val medioReunion: String
 )
 
+/**
+ * Estructura del evento
+ */
 data class Evento(
     val id: Int,
     val tipoEvento: String,

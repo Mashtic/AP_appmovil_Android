@@ -29,16 +29,16 @@ class Main_GestionProyectos : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Se realiza para revisar si hay notificaciones pendientes por implementar.
+        // Se realiza para revisar si hay notificaciones pendientes por implementar, especialmente
+        // sobre tareas.
         val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationWorker>().
-        setInitialDelay(15, TimeUnit.SECONDS)
-            // Constraints, NetworkType, Charging, etc., pueden ser configurados aquí si es necesario
-            .build()
+        setInitialDelay(15, TimeUnit.SECONDS).build()
         WorkManager.getInstance(this).enqueue(notificationWorkRequest)
 
-
+        // Se realiza para revisar si hay notificaciones pendientes por implementar, especialmente
+        // sobre reuniones.
         val periodicWorkRequest = OneTimeWorkRequestBuilder<NotifyMeetingWorker>().
-        setInitialDelay(15, TimeUnit.SECONDS) // o el intervalo que elijas
+        setInitialDelay(15, TimeUnit.SECONDS)
             .build()
 
         WorkManager.getInstance(this).enqueue(periodicWorkRequest)
