@@ -7,12 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.setion_ap.APP.GestionProyectos.Consulta_De_Proyectos.CP_Consulta_De_Proyectos
 import com.example.setion_ap.APP.GestionProyectos.Crear_Reunion.CR_NuevaReunion
 import com.example.setion_ap.APP.GestionProyectos.Modificacion_De_Informacion.MI_ModificarTarea
 import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos
 import com.example.setion_ap.Procedures.GP_Procedures
+import com.example.setion_ap.Procedures.NotificationService
+import com.example.setion_ap.Procedures.NotificationWorker
+import com.example.setion_ap.Procedures.NotifyMeetingWorker
 import com.example.setion_ap.R
+import java.util.concurrent.TimeUnit
 
 class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnCreacionDeProyectos:Button
@@ -22,6 +28,24 @@ class Main_GestionProyectos : AppCompatActivity() {
     private lateinit var btnAtras:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Se realiza para revisar si hay notificaciones pendientes por implementar.
+        val notificationWorkRequest = OneTimeWorkRequestBuilder<NotificationWorker>().
+        setInitialDelay(15, TimeUnit.SECONDS)
+            // Constraints, NetworkType, Charging, etc., pueden ser configurados aquí si es necesario
+            .build()
+        WorkManager.getInstance(this).enqueue(notificationWorkRequest)
+
+
+        val periodicWorkRequest = OneTimeWorkRequestBuilder<NotifyMeetingWorker>().
+        setInitialDelay(15, TimeUnit.SECONDS) // o el intervalo que elijas
+            .build()
+
+        WorkManager.getInstance(this).enqueue(periodicWorkRequest)
+
+        //val notificationService = NotificationService()
+        //notificationService.notifyMeetingParticipants()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_gestionproyectos)

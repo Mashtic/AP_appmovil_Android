@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".APP.Evaluaciones.E_BurndownCharts">
+    tools:context=".APP.Evaluaciones.BurndownChart.E_BurndownCharts">
 
     <!--LOGO TEC-->
     <FrameLayout
@@ -50,57 +50,39 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo_BurndownChart"
+        app:layout_constraintTop_toBottomOf="@id/frame_titulo_BurndownChart"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnProyecto1_BC"
+        <ListView
+            android:id="@+id/listView_BC"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="70dp"
-            android:backgroundTint="@color/btn_blue"
-            android:text="Proyecto 1">
-
-        </Button>
-
-        <Button
-            android:id="@+id/btnProyecto2_BC"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/btn_blue"
-            android:text="Proyecto 2">
-
-        </Button>
-
-        <Button
-            android:id="@+id/btnProyecto3_BC"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/btn_blue"
-            android:text="Proyecto 3">
-
-        </Button>
-
-
-        <Button
-            android:id="@+id/btnAtras_BC"
-            android:layout_width="202dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="@color/btn_blue"
-            android:text="Atras">
-
-        </Button>
-
-
+            android:layout_height="520dp"
+            android:paddingHorizontal="12dp" />
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_botones_BC"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/btnAtras_BC"
+                android:layout_width="202dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop ="0dp"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Atras"/>
+        </LinearLayout>
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

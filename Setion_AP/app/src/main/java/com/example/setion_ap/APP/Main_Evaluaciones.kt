@@ -7,8 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.APP.Evaluaciones.E_BurndownCharts
-import com.example.setion_ap.APP.Evaluaciones.E_InformeGeneral
+import com.example.setion_ap.APP.Evaluaciones.BurndownChart.E_BurndownCharts
+import com.example.setion_ap.APP.Evaluaciones.Informes.E_InformeGeneral
 import com.example.setion_ap.APP.Evaluaciones.E_CreacionDeForos
 import com.example.setion_ap.R
 

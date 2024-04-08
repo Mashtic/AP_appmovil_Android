@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.APP.Main_Evaluaciones
 import com.example.setion_ap.R
 
 class E_BC_Proyecto : AppCompatActivity() {
@@ -27,7 +26,7 @@ class E_BC_Proyecto : AppCompatActivity() {
 
 
     private fun initComponents(){
-        btnAtras = findViewById<Button>(R.id.btnAtras_P)
+        btnAtras = findViewById<Button>(R.id.btnAtras_BP)
 
     }
     private fun initListeners(){
@@ -36,7 +35,7 @@ class E_BC_Proyecto : AppCompatActivity() {
     }
 
     private fun fun_atras(){
-        intent = Intent(this, Main_Evaluaciones::class.java)
+        intent = Intent(this, E_BurndownCharts::class.java)
         startActivity(intent)
     }
 }

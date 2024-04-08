@@ -16,7 +16,11 @@
         android:theme="@style/Theme.Setion_AP"
         tools:targetApi="31" >
         <activity
+<<<<<<< HEAD
             android:name=".APP.GestionProyectos.Main_InicioSesion"
+=======
+            android:name=".APP.Evaluaciones.Informes.E_InformeProyecto"
+>>>>>>> 689c7e83cd4c362f918319eb27cfd27b81aad0d2
             android:exported="false" />
         <activity
             android:name=".APP.Evaluaciones.Foros.E_F_UsarForo_p2"
@@ -34,10 +38,10 @@
             android:name=".APP.Evaluaciones.E_CreacionDeForos"
             android:exported="false" />
         <activity
-            android:name=".APP.Evaluaciones.E_BurndownCharts"
+            android:name=".APP.Evaluaciones.BurndownChart.E_BurndownCharts"
             android:exported="false" />
         <activity
-            android:name=".APP.Evaluaciones.E_InformeGeneral"
+            android:name=".APP.Evaluaciones.Informes.E_InformeGeneral"
             android:exported="false" />
         <activity
             android:name=".APP.Main_Evaluaciones"

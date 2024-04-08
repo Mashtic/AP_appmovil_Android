@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".APP.Evaluaciones.E_InformeGeneral">
+    tools:context=".APP.Evaluaciones.Informes.E_InformeGeneral">
     <FrameLayout
         android:id="@+id/frame_logo_INFO"
         android:layout_width="match_parent"
@@ -28,26 +28,40 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/frame_botones_InformeGeneral"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo_INFO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_INFO">
 
-
-
-        <Button
-            android:id="@+id/btnAtras_INFO"
-            android:layout_width="202dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="500dp"
-            android:backgroundTint="@color/btn_blue"
-            android:text="Atras">
-
-        </Button>
-
+        <ListView
+            android:id="@+id/listView_InformeGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp" />
 
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame_botones_InformeGeneral"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/btnAtras_InformeGeneral"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Atras"/>
+        </LinearLayout>
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

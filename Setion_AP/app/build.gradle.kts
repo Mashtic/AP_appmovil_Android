@@ -57,6 +57,7 @@ dependencies {
     implementation(files("libs\\jtds-1.3.1.jar"))
     // https://mvnrepository.com/artifact/org.quanqi/android-holo-graph
     implementation("org.quanqi:android-holo-graph:0.1.0")
+    implementation(libs.androidx.work.runtime.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
