@@ -9,13 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
-import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -37,7 +35,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
     private lateinit var edNombre: EditText
     private lateinit var edRecursosNecesarios: EditText
     private lateinit var edPresupuesto: EditText
-    private lateinit var tvColaboradores: TextView
+    private lateinit var edColaboradores: EditText
     private lateinit var edEstadoDeProyecto: EditText
     private lateinit var edDescripcion: EditText
     private lateinit var tvFechaDeInicio: TextView
@@ -71,7 +69,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
         edNombre = findViewById(R.id.edNombre_GPCREACIONPROYECTOS)
         edRecursosNecesarios = findViewById(R.id.edRecursosNecesarios_GPCREACIONPROYECTOS)
         edPresupuesto = findViewById(R.id.edPresupuesto_GPCREACIONPROYECTOS)
-        tvColaboradores = findViewById(R.id.edColaboradores_GPCREACIONPROYECTOS)
+        edColaboradores = findViewById(R.id.edColaboradores_GPCREACIONPROYECTOS)
         edEstadoDeProyecto = findViewById(R.id.edEstadoDelProyecto_GPCREACIONPROYECTOS)
         edDescripcion = findViewById(R.id.edDescripcion_GPCREACIONPROYECTOS)
         tvFechaDeInicio = findViewById(R.id.tvFechaDeInicio_GPCREACIONPROYECTOS)
@@ -81,12 +79,12 @@ class GP_CreacionProyectos : AppCompatActivity() {
     private fun initListeners() {
         //BOTONES
         btnCancelar.setOnClickListener { (finish()) }
-        btnGuardar.setOnClickListener {
-            fun_GuardarDatos()
-            finish()
-        }
+        btnGuardar.setOnClickListener { fun_GuardarDatos() }
         btnHistorialDeCambios.setOnClickListener { fun_HistorialDeCambios() }
+        println("ANTES DE ")
         btnAnadirTarea.setOnClickListener { fun_AnadirTarea() }
+        println("Despues de")
+
         //IMAGENES
         imgLupa.setOnClickListener { fun_AnadirColaborador() }
         imgCalendario.setOnClickListener { fun_AnadirFecha() }
@@ -94,14 +92,14 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
     private fun fun_AnadirColaborador() {
         intent = Intent(this, GP_AnadirColaborador::class.java)
-        startForResultColaboradores.launch(intent)
+        startActivity(intent)
     }
 
     private fun fun_GuardarDatos() {
         if(edNombre.text.isNotEmpty()&&
             edRecursosNecesarios.text.isNotEmpty()&&
             edPresupuesto.text.isNotEmpty()&&
-            tvColaboradores.text.isNotEmpty()&&
+            edColaboradores.text.isNotEmpty()&&
             edEstadoDeProyecto.text.isNotEmpty()&&
             edDescripcion.text.isNotEmpty()&&
             tvFechaDeInicio.text.isNotEmpty()&&
@@ -109,7 +107,7 @@ class GP_CreacionProyectos : AppCompatActivity() {
 
             if(edEstadoDeProyecto.text.toString().toInt()<LIM_INF_ESTADOPROYECT
                 || edEstadoDeProyecto.text.toString().toInt()>LIM_SUP_ESTADOPROYECT) {
-                edEstadoDeProyecto.setText("4")
+                edEstadoDeProyecto.setText("2")
             }
 
             GP_Procedures.insertarProyecto(edNombre.text.toString(),
@@ -117,10 +115,12 @@ class GP_CreacionProyectos : AppCompatActivity() {
                 edEstadoDeProyecto.text.toString().toInt(),
                 edDescripcion.text.toString(),
                 convertirStringADate(tvFechaDeInicio.text.toString()),
-                edResponsable.text.toString(), edRecursosNecesarios.text.toString(),this)
-        } else {
+                edResponsable.text.toString(), this)
+        }else
+        {
             Toast.makeText(this, "No puede haber espacios sin rellenar", Toast.LENGTH_LONG).show()
         }
+
     }
 
     private fun fun_HistorialDeCambios() {
@@ -129,8 +129,11 @@ class GP_CreacionProyectos : AppCompatActivity() {
     }
 
     private fun fun_AnadirTarea() {
+        /*println("Entramos al intent")
         intent = Intent(this, GP_AnadirTareas::class.java)
-        startActivity(intent)
+        startActivity(intent)*/
+
+        convertirStringADate(tvFechaDeInicio.text.toString())
     }
 
     private fun fun_AnadirFecha() {
@@ -172,13 +175,6 @@ class GP_CreacionProyectos : AppCompatActivity() {
             // Manejar cualquier excepción que pueda ocurrir durante la conversión
             ex.printStackTrace()
             java.sql.Date(System.currentTimeMillis())
-        }
-    }
-
-    private val startForResultColaboradores = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
-        tvColaboradores.setText("")
-        for(e in GP_VariableGlobales.listaColaboradoresAnadidos){
-            tvColaboradores.setText(tvColaboradores.text.toString() + e.nombreCompleto + "\n")
         }
     }
 }

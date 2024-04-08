@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
+    android:background="@color/screen_background">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_GPCREACIONPROYECTOS"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frame_logo_GPCREACIONPROYECTOS"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/img_logoTec_GPCREACIONPROYECTOS"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logotec2"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                >
+
+            </ImageView>
+
+        </FrameLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edNombre_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nombre"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edRecursosNecesarios_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Recursos necesarios"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edPresupuesto_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Presupuesto"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edColaboradores_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Colaboradores"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+
+            <ImageView
+                android:layout_gravity="end"
+                android:id="@+id/imgLUPA_GPCREACIONPROYECTOS"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/lupa"
+                android:layout_marginEnd="10dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edEstadoDelProyecto_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Estado del proyecto(0:No activo, 1:Activo)"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edDescripcion_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Descripción"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+
+            <TextView
+                android:id="@+id/tvFechaDeInicio_GPCREACIONPROYECTOS"
+                android:hint="Fecha de inicio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="date"
+                android:background="@drawable/style_border_edittext"/>
+            <ImageView
+                android:layout_gravity="end"
+                android:id="@+id/imgCALENDAR_GPCREACIONPROYECTOS"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_calendar_month_24"
+                android:layout_marginEnd="10dp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edResponsable_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Responsable"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            >
+
+            <Button
+                android:id="@+id/btnAnadirTarea_GPCREACIONPROYECTOS"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_gray"
+                android:text="Añadir tarea" />
+            <Button
+                android:id="@+id/btnHistorialDeCambios_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Historial de cambios"
+                android:backgroundTint="@color/btn_gray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnGuardar_GPCREACIONPROYECTOS"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Guardar" />
+            <Button
+                android:id="@+id/btnCancelar_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Cancelar"
+                android:backgroundTint="@color/btn_blue"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
