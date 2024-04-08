@@ -3,17 +3,19 @@ package com.example.setion_ap.Procedures
 import android.os.StrictMode
 import android.util.Log
 import java.sql.Connection
+import java.sql.Date
 import java.sql.DriverManager
 import java.sql.SQLException
 import java.sql.Time
-import java.util.Date
 
 class ConnectSql {
-<<<<<<< HEAD
-    private val ip = "192.168.0.11:1433"
-=======
-    private val ip = "192.168.0.19:1433"//"192.168.100.23:1433"//192.168.100.6:1433
->>>>>>> 689c7e83cd4c362f918319eb27cfd27b81aad0d2
+    /* Config David
+    private val ip = "192.168.100.23:1433"
+    private val db = "GestorProyectos"
+    private val username = "dav"
+    private val password = "12345"
+    */
+    private val ip = "192.168.43.218:1433"
     private val db = "GestorProyectos"
     private val username = "jei"
     private val password = "12345"
@@ -54,7 +56,6 @@ data class vColaboradores(
  * Clase que define las reuniones
  */
 data class vReuniones(
-    val idReunion: Int = 1,
     val nombre: String,
     val fecha: Date,
     val hora: Time,

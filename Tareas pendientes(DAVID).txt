@@ -1,8 +1,5 @@
-GENERAL---
--Conectar la base de datos a sql server
+En Gestion de proyectos
+- Areglar story point 1 - 10
+- Revisar si cambiar drop down menu
+- Arregrar en modificacion de info
 
-
-PANTALLAS
-activity_gp_creacion_proyectos
--Falta modificar el componente colaboradores
--Falta darle formato al campo de fecha para que reciba una fecha
