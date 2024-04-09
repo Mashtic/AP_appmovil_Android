@@ -7,4 +7,154 @@
     android:layout_height="match_parent"
     tools:context=".APP.GestionColaboradores.Asignaciones.AsignarProyecto">
 
+
+    <!--LOGO TEC-->
+    <FrameLayout
+        android:id="@+id/frame_logo_CPTAREAS"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec_CPTAREAS"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logotec2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            >
+        </ImageView>
+
+    </FrameLayout>
+
+    <!--Pantalla del medio-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_CPTAREAS"
+        app:layout_constraintBottom_toTopOf="@+id/frame_botones_CPTAREAS">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--TITULO-->
+            <FrameLayout
+                android:id="@+id/frame_titulo_CPTAREAS"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/screen_background"
+                android:layout_marginHorizontal="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/frame_logo_CPTAREAS">
+                <TextView
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Proyectos"/>
+
+            </FrameLayout>
+
+            <!-- Lista de proyectos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Proyecto 1 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Proyecto 1"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Descripción del Proyecto 1"/>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gestionar Participantes"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Proyecto 2 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Proyecto 2"
+                            android:textStyle="bold"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Descripción del Proyecto 2"/>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gestionar Participantes"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Agregar más proyectos según sea necesario -->
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!--BOTON ATRAS-->
+    <FrameLayout
+        android:id="@+id/frame_botones_CPTAREAS"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:layout_margin="10dp"
+                android:id="@+id/btnAtras_CPTAREAS"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Atras"/>
+        </LinearLayout>
+    </FrameLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
