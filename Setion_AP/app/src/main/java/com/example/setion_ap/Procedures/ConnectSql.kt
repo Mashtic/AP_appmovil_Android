@@ -9,7 +9,7 @@ import java.sql.Time
 import java.util.Date
 
 class ConnectSql {
-    private val ip = "192.168.0.11:1433"//"192.168.100.23:1433"//192.168.100.6:1433
+    private val ip = "192.168.100.23:1433"//"192.168.100.23:1433"//192.168.100.6:1433
     private val db = "GestorProyectos"
     private val username = "dav"
     private val password = "12345"
@@ -44,6 +44,16 @@ data class vColaboradores(
     val departamento: String,
     val telefono: String,
     val proyecto: String
+)
+
+data class vColaboradoresCompleto(
+    val cedula: String,
+    val nombreCompleto: String,
+    val email: String?,
+    val departamento: Int?,
+    val telefono: String?,
+    val proyecto: Int,
+    val contrasenna: String?
 )
 
 /**

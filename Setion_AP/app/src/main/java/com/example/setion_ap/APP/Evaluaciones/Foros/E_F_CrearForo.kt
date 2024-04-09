@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.APP.Evaluaciones.E_CreacionDeForos
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
 class E_F_CrearForo : AppCompatActivity() {
 
@@ -33,9 +34,21 @@ class E_F_CrearForo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        initComponents()
-        initListeners()
+        if(GP_VariableGlobales.get_proyectoAsignado()!=null) {
+            if (noHayForos()) {
+                initComponents()
+                initListeners()
+            } else {
+                Toast.makeText(this, "Foro ya disponible", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }else{
+            println(GP_VariableGlobales.get_proyectoAsignado().toString() + "")
+            Toast.makeText(this, "Proyecto no asignado", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
+
     private fun initComponents(){
         btnGuardar= findViewById<Button>(R.id.btnGuardar_CF)
         btnCancelar = findViewById<Button>(R.id.btnCancelar_CF)
@@ -54,7 +67,7 @@ class E_F_CrearForo : AppCompatActivity() {
         if(edNombre.text.isNotEmpty() && edDescripcionForo.text.isNotEmpty() && edContenido.text.isNotEmpty()){
             GP_Procedures.set_insertarForo(edNombre.text.toString(),
                 edDescripcionForo.text.toString(),
-                null,
+                GP_VariableGlobales.get_proyectoAsignado(),
                 edContenido.text.toString(),
                 this)// De momento, idPoryecto no habilitado
             finish()
@@ -62,6 +75,18 @@ class E_F_CrearForo : AppCompatActivity() {
             Toast.makeText(this, "Debe llenar espacios", Toast.LENGTH_LONG).show()
         }
     }
+
+    //Valida si en un proyecto hay foros, si no hay foros entonces devuelve true
+    private fun noHayForos(): Boolean {
+        val Foros = GP_Procedures.get_foros()
+        for (e in Foros){
+            if(e.proyectoId == GP_VariableGlobales.idProyecto){
+                return false
+            }
+        }
+        return true
+    }
+
     private fun fun_cancelar(){
         finish()
     }

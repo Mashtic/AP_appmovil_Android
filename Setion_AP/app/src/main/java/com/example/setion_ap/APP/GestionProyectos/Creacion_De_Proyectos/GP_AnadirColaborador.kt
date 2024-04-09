@@ -58,7 +58,6 @@ class GP_AnadirColaborador : AppCompatActivity(), AdapterView.OnItemClickListene
     private fun initComponents() {
         btnCancelar = findViewById(R.id.btnCancelar_GPANADIRCOLABORADOR)
         btnGuardar = findViewById(R.id.btnGuardar_GPANADIRCOLABORADOR)
-        listView = findViewById(R.id.listView_GPANADIRCOLABORADOR)
     }
 
     private fun initListeners() {

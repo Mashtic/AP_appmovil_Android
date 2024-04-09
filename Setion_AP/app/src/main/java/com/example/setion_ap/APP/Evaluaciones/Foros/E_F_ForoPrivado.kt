@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.R
+import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
 class E_F_ForoPrivado : AppCompatActivity() {
     private lateinit var btnAtras: Button
@@ -21,7 +22,7 @@ class E_F_ForoPrivado : AppCompatActivity() {
 
     //TEXTVIEW
     private lateinit var tvForoGeneral: TextView
-    private var idForo: Int = 1
+    private var idForo: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,51 +34,63 @@ class E_F_ForoPrivado : AppCompatActivity() {
         }
         initComponents()
         initListeners()
-        fun_foroAsignado()
-        cargarComentarios()
+        if(GP_VariableGlobales.get_proyectoAsignado()!=null) {
+            fun_foroAsignado()
+            cargarComentarios()
+        } else {
+            tvForoGeneral.setText("No está asignado a ningún proyecto")
+        }
     }
 
 
     private fun initComponents() {
         btnAtras = findViewById(R.id.btnAtras_EFPRIVADO)
         btnComentar = findViewById(R.id.btnComentar_EFPRIVADO)
-
         tvForoGeneral = findViewById(R.id.tvForo_EFPRIVADO)
     }
 
     private fun initListeners() {
         btnAtras.setOnClickListener{ finish() }
-        btnComentar.setOnClickListener{ funComentar() }
+        btnComentar.setOnClickListener{
+            if(idForo!=null){
+                funComentar()
+            } else{
+                Toast.makeText(this, "No se puede comentar", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun fun_foroAsignado() {
-        /*
         val Foros = GP_Procedures.get_foros()
         for (e in Foros){
-            if(e.proyectoId == GP_VariablesGlobales.idProyectoAsignado){
+            if(e.proyectoId == GP_VariableGlobales.idProyecto){
                 idForo = e.idForo
                 break
             }
-        }*/
+        }
     }
 
     private fun funComentar() {
-        Comentar(this){comentario ->
-            val com = comentario
-            println(com)
-            try {
-                val primerForo = GP_Procedures.get_foros().first()
-                //SOLO DEBO DE CAMBIAR IDFORO POR EL
-                GP_Procedures.set_agregarMensajeEnForo(primerForo.idForo, "11111111", com, this)
-                cargarComentarios()
+        if(idForo!=null){
+            Comentar(this){comentario ->
+                val com = comentario
+                println(com)
+                try {
+                    val primerForo = GP_Procedures.get_foros().first()
+                    //SOLO DEBO DE CAMBIAR IDFORO POR EL
+                    GP_Procedures.set_agregarMensajeEnForo(idForo!!, GP_VariableGlobales.userCedula, com, this)
+                    cargarComentarios()
 
-                /*
-                GP_Procedures.set_agregarMensajeEnForo(idForo, "11111111", com, this)
-                cargarComentarios()*/
-            } catch (e : Exception){
-                Toast.makeText(this, "Erro al comentar", Toast.LENGTH_SHORT).show()
+                    /*
+                    GP_Procedures.set_agregarMensajeEnForo(idForo, "11111111", com, this)
+                    cargarComentarios()*/
+                } catch (e : Exception){
+                    Toast.makeText(this, "Erro al comentar", Toast.LENGTH_SHORT).show()
+                }
             }
-
+        }
+        else{
+            tvForoGeneral.setText("No hay foros disponibles")
         }
     }
 
@@ -99,6 +112,7 @@ class E_F_ForoPrivado : AppCompatActivity() {
     }
 
 
+    //La funcion del
     @SuppressLint("SetTextI18n")
     private fun cargarComentarios() {
         tvForoGeneral.text = ""

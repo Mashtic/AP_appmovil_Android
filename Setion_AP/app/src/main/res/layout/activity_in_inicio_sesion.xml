@@ -47,14 +47,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edUsuario_IN"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Email"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -62,7 +62,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -70,7 +70,7 @@
                 android:inputType="textPassword"
                 android:id="@+id/edContrasenna_IN1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Constraseña"
                 android:background="@drawable/style_border_edittext">
             </EditText>

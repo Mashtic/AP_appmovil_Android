@@ -8,13 +8,13 @@
     tools:context=".APP.PaginaPrincipal">
 
     <FrameLayout
-        android:id="@+id/frame_logo_MAINGP"
+        android:id="@+id/frame_logo_ACOPCIONESASIGNACION"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/img_logoTec_MAINGP"
+            android:id="@+id/img_logoTec_ACOPCIONESASIGNACION"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/logotec2"
@@ -31,12 +31,12 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo_MAINGP"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_ACOPCIONESASIGNACION"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnGestionarActividades_MAINGP"
+            android:id="@+id/btnGestionarActividades_ACOPCIONESASIGNACION"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center"
@@ -45,11 +45,10 @@
             android:backgroundTint="@color/btn_blue"
             android:text="Gestionar Actividades de integrantes"
             tools:ignore="HardcodedText">
-
         </Button>
 
         <Button
-            android:id="@+id/btnAnadirColaborador_MAINGP"
+            android:id="@+id/btnAnadirColaborado_ACOPCIONESASIGNACION"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="20dp"
@@ -61,7 +60,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnEliminarColaborador_MAINGP"
+            android:id="@+id/btnEliminarColaborador_ACOPCIONESASIGNACION"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginHorizontal="20dp"
@@ -73,7 +72,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btnAtras_MAINGP"
+            android:id="@+id/btnAtras_ACOPCIONESASIGNACION"
             android:layout_width="202dp"
             android:layout_height="40dp"
             android:layout_gravity="center"

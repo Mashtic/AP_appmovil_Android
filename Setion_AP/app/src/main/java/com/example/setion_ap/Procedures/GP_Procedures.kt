@@ -920,7 +920,7 @@ object GP_Procedures {
                         idForo = resultSet.getInt("foroId"),
                         nombre = resultSet.getString("nombre"),
                         descripcionForo = resultSet.getString("descripcion"),
-                        proyectoId = resultSet.getInt("foroId")
+                        proyectoId = resultSet.getInt("proyectoId")
                     )
                     partForos.add(foros)
                 }
@@ -1006,6 +1006,43 @@ object GP_Procedures {
             }
         }
         return partUsuarios
+    }
+
+    fun get_ColaboradoresCompleto(): ArrayList<vColaboradoresCompleto> {
+        val partColaboradores = ArrayList<vColaboradoresCompleto>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement = connectSql.dbConn()?.prepareStatement("SELECT cedula, nombreCompleto, email, departamento, telefono, proyecto, contrasenna FROM Colaboradores")
+            val resultSet = statement?.executeQuery()
+
+            // Procesar los resultados
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    val Colaboradores = vColaboradoresCompleto(
+                        cedula = resultSet.getString("cedula"),
+                        nombreCompleto = resultSet.getString("nombreCompleto"),
+                        email = resultSet.getString("email"),
+                        departamento = resultSet.getInt("departamento"),
+                        telefono = resultSet.getString("telefono"),
+                        proyecto = resultSet.getInt("proyecto"),
+                        contrasenna = resultSet.getString("contrasenna")
+                    )
+                    partColaboradores.add(Colaboradores)
+                }
+            }
+        } catch (e1: SQLException) {
+            println("Error:::$e1")
+        } finally {
+            // Asegurarse de cerrar la conexión
+            try {
+                connectSql.dbConn()?.close()
+            } catch (e2: SQLException) {
+                // Manejo de error al cerrar conexión
+                println("Error:::$e2")
+            }
+        }
+        return partColaboradores
     }
 
 

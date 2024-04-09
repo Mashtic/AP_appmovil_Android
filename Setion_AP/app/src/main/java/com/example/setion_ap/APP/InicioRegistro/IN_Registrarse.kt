@@ -62,27 +62,38 @@ class IN_Registrarse : AppCompatActivity() {
             edCorreo.text.isNotEmpty() && edContrasenna.text.isNotEmpty() &&
             edConfContrasenna.text.isNotEmpty() && edTelefono.text.isNotEmpty() &&
             edCedula.text.isNotEmpty()){
-            if (edContrasenna.text.toString().equals(edConfContrasenna.text.toString())){
-                if(GP_Procedures.set_insertarColaborador(edCedula.text.toString(),
-                    edNombre.text.toString() + " " + edApellidos.text.toString(),
-                    edCorreo.text.toString(),
-                    1,
-                    edTelefono.text.toString(),
-                    edContrasenna.text.toString(), this))
+            if(validarCorreo(edCorreo.text.toString()))
+            {
+                if (edContrasenna.text.toString().equals(edConfContrasenna.text.toString()))
                 {
-                    GP_VariableGlobales.userNombre = edNombre.text.toString() + " " + edApellidos.text.toString()
-                    GP_VariableGlobales.userCedula = edCedula.text.toString()
-                    val intent = Intent(this, PaginaPrincipal::class.java)
-                    startActivity(intent)
-                }else{
-                    finish()
-                }
+                    if(GP_Procedures.set_insertarColaborador(edCedula.text.toString(),
+                        edNombre.text.toString() + " " + edApellidos.text.toString(),
+                        edCorreo.text.toString(),
+                        1,
+                        edTelefono.text.toString(),
+                        edContrasenna.text.toString(), this))
+                    {
+                        GP_VariableGlobales.userNombre = edNombre.text.toString() + " " + edApellidos.text.toString()
+                        GP_VariableGlobales.userCedula = edCedula.text.toString()
+                        val intent = Intent(this, PaginaPrincipal::class.java)
+                        startActivity(intent)
+                    }else{
+                        finish()
+                    }
 
-            }else{
-                Toast.makeText(this, "Inconsistencia en contraseña", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Inconsistencia en contraseña", Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(this, "Correo no valido", Toast.LENGTH_LONG).show()
             }
         }else{
             Toast.makeText(this, "Datos incompletos", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun validarCorreo(correo: String): Boolean {
+        val regex = Regex("^\\w+([.-]?\\w+)*@(estudiantec\\.cr|gmail\\.com)\$")
+        return regex.matches(correo)
     }
 }

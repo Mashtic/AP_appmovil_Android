@@ -10,13 +10,13 @@
 
     <!--LOGO TEC-->
     <FrameLayout
-        android:id="@+id/frame_logo_MIMODIFICARCOLABORADORES"
+        android:id="@+id/frame_logo_MCINFO"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:id="@+id/img_logoTec_MIMODIFICARCOLABORADORES"
+            android:id="@+id/img_logoTec_MCINFO"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/logotec2"
@@ -29,21 +29,22 @@
 
     <!--Pantalla del medio-->
     <LinearLayout
+        android:layout_marginHorizontal="12dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/frame_logo_MIMODIFICARCOLABORADORES"
-        app:layout_constraintBottom_toTopOf="@+id/frame_botones_MIMODIFICARCOLABORADORES"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_MCINFO"
+        app:layout_constraintBottom_toTopOf="@+id/frame_botones_MCINFO"
         android:orientation="vertical">
 
         <!--TITULO-->
         <FrameLayout
-            android:id="@+id/frame_titulo_MIMODIFICARCOLABORADORES"
+            android:id="@+id/frame_titulo_MCINFO"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/screen_background"
             android:layout_marginHorizontal="50dp"
-            app:layout_constraintTop_toBottomOf="@+id/frame_logo_MIMODIFICARCOLABORADORES">
+            app:layout_constraintTop_toBottomOf="@+id/frame_logo_MCINFO">
             <TextView
                 android:textStyle="bold"
                 android:textSize="24dp"
@@ -56,14 +57,14 @@
 
         <!--        BUSCAR-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_buscar_MIMODIFICARCOLABORADORES"
+            android:id="@+id/cv_buscar_MCINFO"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edColaboradores_MIMODIFICARCOLABORADORES"
+                android:id="@+id/edColaboradores_MCINFO"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Buscar"
@@ -73,7 +74,7 @@
 
             <ImageView
                 android:layout_gravity="end"
-                android:id="@+id/imgLUPA_MIMODIFICARCOLABORADORES"
+                android:id="@+id/imgLUPA_MCINFO"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/lupa"
@@ -81,8 +82,9 @@
         </androidx.cardview.widget.CardView>
 
         <!--LISTA PROYECTOS-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_proyectos"
+        <ListView
+            android:dividerHeight="12dp"
+            android:id="@+id/lvColaboradores_MCINFO"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="1dp"
@@ -91,7 +93,7 @@
 
     <!--BOTON ATRAS-->
     <FrameLayout
-        android:id="@+id/frame_botones_MIMODIFICARCOLABORADORES"
+        android:id="@+id/frame_botones_MCINFO"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         tools:ignore="MissingConstraints"
@@ -105,7 +107,7 @@
             >
             <Button
                 android:layout_margin="10dp"
-                android:id="@+id/btnAtras_MIMODIFICARCOLABORADORES"
+                android:id="@+id/btnAtras_MCINFO"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/btn_blue"

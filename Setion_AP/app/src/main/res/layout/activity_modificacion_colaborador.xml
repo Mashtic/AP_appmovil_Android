@@ -13,14 +13,14 @@
         android:orientation="vertical">
 
         <FrameLayout
-            android:id="@+id/frame_logo_MIMODIFICARCOLABORADOR"
+            android:id="@+id/frame_logo_MCCOLABORADOR"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             tools:ignore="MissingConstraints"
             android:layout_marginBottom="30dp">
 
             <ImageView
-                android:id="@+id/img_logoTec_MIMODIFICARCOLABORADOR"
+                android:id="@+id/img_logoTec_MCCOLABORADOR"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/logotec2"
@@ -35,30 +35,31 @@
         <!-- Campo para mostrar el nombre del colaborador seleccionado -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
-            <TextView
-                android:id="@+id/tvNombreColaborador_MIMODIFICARCOLABORADOR"
+            <EditText
+                android:id="@+id/edNombre_MCCOLABORADOR"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Nombre del colaborador seleccionado"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
                 android:gravity="center_vertical"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:background="@drawable/style_border_edittext"/>
         </androidx.cardview.widget.CardView>
 
         <!-- Campos para actualizar los datos del colaborador -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edCorreo_MIMODIFICARCOLABORADOR"
+                android:id="@+id/edCorreo_MCCOLABORADOR"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -66,14 +67,16 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edTelefono_MIMODIFICARCOLABORADOR"
+                android:maxLength="8"
+                android:inputType="number"
+                android:id="@+id/edTelefono_MCCOLABORADOR"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Telefono"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -81,14 +84,16 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edDepartamento_MIMODIFICARCOLABORADOR"
+                android:inputType="number"
+                android:maxLength="1"
+                android:id="@+id/edDepartamento_MCCOLABORADOR"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Departamento"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -101,10 +106,12 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edEstado_MIMODIFICARCOLABORADOR"
+                android:inputType="number"
+                android:maxLength="20"
+                android:id="@+id/edEstado_MCCOLABORADOR"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Estado (Libre o Trabajando)"
+                android:hint="Estado"
                 android:background="@drawable/style_border_edittext">
             </EditText>
         </androidx.cardview.widget.CardView>
@@ -120,16 +127,18 @@
             >
 
             <Button
-                android:id="@+id/btnGuardar_MIMODIFICARCOLABORADOR"
-                android:layout_width="176dp"
+                android:id="@+id/btnGuardar_MCCOLABORADOR"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginEnd="6dp"
                 android:backgroundTint="@color/btn_blue"
                 android:text="Guardar" />
             <Button
-                android:id="@+id/btnAtras_MIMODIFICARCOLABORADOR"
-                android:layout_width="match_parent"
+                android:id="@+id/btnAtras_MCCOLABORADOR"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="Atras"
                 android:backgroundTint="@color/btn_blue"/>
         </LinearLayout>

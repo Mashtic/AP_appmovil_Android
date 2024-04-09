@@ -49,20 +49,25 @@ class IN_InicioSesion : AppCompatActivity() {
 
     private fun fun_ingresar() {
         val usuarios = GP_Procedures.get_usuario()
+        var encontrado = false
         for (e in usuarios){
+            println()
             if(e.email.equals(edCorreo.text.toString())){
                 if (e.contrasenna.equals(edContrasenna.text.toString()) || e.contrasenna.equals(null)){
+                    encontrado = true
                     GP_VariableGlobales.userNombre = e.nombre
                     GP_VariableGlobales.userCedula = e.cedula
                     val intent = Intent(this, PaginaPrincipal::class.java)
                     startActivity(intent)
+                    finish()
                     break
-                } else {
-                    Toast.makeText(this, "Correo incorrecta", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-        Toast.makeText(this, "Correo no encontrado", Toast.LENGTH_SHORT).show()
+        if(!encontrado){
+            Toast.makeText(this, "Correo no encontrado", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun fun_cancelar() {

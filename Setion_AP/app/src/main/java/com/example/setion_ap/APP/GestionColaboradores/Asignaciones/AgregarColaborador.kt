@@ -56,9 +56,7 @@ class AgregarColaborador : AppCompatActivity(), AdapterView.OnItemClickListener 
 
     //INITS
     private fun initComponents() {
-        btnCancelar = findViewById(R.id.btnCancelar_GPANADIRCOLABORADOR)
-        btnGuardar = findViewById(R.id.btnGuardar_GPANADIRCOLABORADOR)
-        listView = findViewById(R.id.listView_GPANADIRCOLABORADOR)
+        btnGuardar = findViewById(R.id.btnGuardar_ACANADIRCOLABORADOR)
     }
 
     private fun initListeners() {

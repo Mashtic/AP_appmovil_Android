@@ -46,14 +46,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edNombre_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Nombre"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -61,14 +61,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edApellidos_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Apellidos"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -76,14 +76,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edCedula_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Cédula"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -91,14 +91,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edCorreo_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -106,14 +106,14 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
                 android:id="@+id/edTelefono_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Número"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -121,7 +121,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -129,7 +129,7 @@
                 android:inputType="textPassword"
                 android:id="@+id/edContrasenna_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Contraseña"
                 android:background="@drawable/style_border_edittext">
             </EditText>
@@ -137,7 +137,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
@@ -145,7 +145,7 @@
                 android:inputType="textPassword"
                 android:id="@+id/edConfirmarContrasenna_IN2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Confirmar contraseña"
                 android:background="@drawable/style_border_edittext">
             </EditText>
