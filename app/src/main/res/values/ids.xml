@@ -4,4 +4,13 @@
     <item name="btnGestionProyectos" type="id" />
     <item name="btnGestionColaboradores" type="id" />
     <item name="btnEvaluaciones" type="id" />
+    <item name="edNombre" type="id" />
+    <item name="edCedula" type="id" />
+    <item name="edCorreo" type="id" />
+    <item name="edDepartamento" type="id" />
+    <item name="edTelefono" type="id" />
+    <item name="edEstado" type="id" />
+    <item name="edNombreProyecto" type="id" />
+    <item name="btnCancelar_AGREGARCOLABORADOR" type="id" />
+    <item name="btnGuardar_AGREGARCOLABORADOR" type="id" />
 </resources>

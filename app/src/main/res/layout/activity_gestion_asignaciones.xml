@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".APP.GestionColaboradores.Asignaciones.GestionAsignaciones"
     android:paddingHorizontal="15dp">
-    
+
 
         <!--LOGO TEC-->
         <FrameLayout
