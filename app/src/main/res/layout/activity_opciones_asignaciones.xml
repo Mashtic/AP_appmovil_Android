@@ -5,6 +5,87 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".APP.GestionColaboradores.Asignaciones.OpcionesAsignaciones">
+    tools:context=".APP.PaginaPrincipal">
+
+    <FrameLayout
+        android:id="@+id/frame_logo_MAINGP"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/img_logoTec_MAINGP"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logotec2"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            tools:ignore="ContentDescription">
+
+        </ImageView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_MAINGP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnGestionarActividades_MAINGP"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Gestionar Actividades de integrantes"
+            tools:ignore="HardcodedText">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnAnadirColaborador_MAINGP"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Añadir colaborador"
+            tools:ignore="HardcodedText">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnEliminarColaborador_MAINGP"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Eliminar colaborador"
+            tools:ignore="HardcodedText">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnAtras_MAINGP"
+            android:layout_width="202dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="70dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Atrás"
+            tools:ignore="HardcodedText">
+
+        </Button>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
