@@ -1,6 +1,7 @@
 package com.example.setion_ap.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,12 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.setion_ap.APP.GestionColaboradores.Asignaciones.OpcionesAsignaciones
 import com.example.setion_ap.Procedures.vColaboradoresCompleto
 import com.example.setion_ap.R
 import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
-class AdapterACAnadirColaborador(context: Context, resource: Int, objects: ArrayList<vColaboradoresCompleto>):
+class AdapterACEliminarColaborador(context: Context, resource: Int, objects: ArrayList<vColaboradoresCompleto>):
     ArrayAdapter<vColaboradoresCompleto>(context, resource, objects) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
@@ -26,6 +28,7 @@ class AdapterACAnadirColaborador(context: Context, resource: Int, objects: Array
 
         // Establecer el texto en el TextView
         nombreProyecto.text = getItem(position)?.nombreCompleto
+        btn.setText("-")
         btn.setOnClickListener{fun_GestionarColaboradores(position)}
 
         return convertView
@@ -33,7 +36,7 @@ class AdapterACAnadirColaborador(context: Context, resource: Int, objects: Array
 
     private fun fun_GestionarColaboradores(position: Int) {
         GP_VariableGlobales.AC_ArrayColaboradores.add(getItem(position)!!)
-        Toast.makeText(context, getItem(position)?.nombreCompleto.toString() + " añadido", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, getItem(position)?.nombreCompleto.toString() + " eliminado", Toast.LENGTH_SHORT).show()
         eliminarItem(getItem(position)!!)
     }
 

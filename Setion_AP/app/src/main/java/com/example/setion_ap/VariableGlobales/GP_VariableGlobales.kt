@@ -2,6 +2,7 @@ package com.example.setion_ap.VariableGlobales
 
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.Procedures.vColaboradores
+import com.example.setion_ap.Procedures.vColaboradoresCompleto
 import com.example.setion_ap.Procedures.vProyectoTareas
 import com.example.setion_ap.Procedures.vProyectos
 
@@ -21,6 +22,7 @@ class GP_VariableGlobales {
 
         //VARIABLES EN AC
         var AC_Proyecto: vProyectos? = null
+        var AC_ArrayColaboradores = ArrayList<vColaboradoresCompleto>()
 
         fun get_proyectoAsignado(): Int? {
             println("Ya pasamos por aca")
@@ -35,6 +37,28 @@ class GP_VariableGlobales {
                 }
             }
             return idProyecto
+        }
+
+        fun get_colaboradores_libres_completos():ArrayList<vColaboradoresCompleto>{
+            var result = ArrayList<vColaboradoresCompleto>()
+            val colaboradores = GP_Procedures.get_ColaboradoresCompleto()
+            for (e in colaboradores){
+                if (e.proyecto==0){
+                    result.add(e)
+                }
+            }
+            return result
+        }
+
+        fun get_colaboradoresDeProyecto(): ArrayList<vColaboradoresCompleto> {
+            val result = ArrayList<vColaboradoresCompleto>()
+            val colaboradores = GP_Procedures.get_ColaboradoresCompleto()
+            for (e in colaboradores){
+                if (e.proyecto== AC_Proyecto!!.id){
+                    result.add(e)
+                }
+            }
+            return result
         }
 
         fun get_msjCorreoPorDefault(medio:String, fecha:String, hora:String, nivelImportancia:String):String{

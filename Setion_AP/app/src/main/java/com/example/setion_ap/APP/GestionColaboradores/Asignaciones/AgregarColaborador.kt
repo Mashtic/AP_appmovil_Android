@@ -1,40 +1,33 @@
-package com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos
+package com.example.setion_ap.APP.GestionColaboradores.Asignaciones
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-//import com.example.setion_ap.APP.GestionColaboradores.
-import com.example.setion_ap.Adapters.AdapterGP_AnadirColaborador
+import com.example.setion_ap.Adapters.AdapterACAnadirColaborador
 import com.example.setion_ap.Procedures.GP_Procedures
-import com.example.setion_ap.Procedures.vColaboradores
+import com.example.setion_ap.Procedures.vColaboradoresCompleto
 import com.example.setion_ap.R
 import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 
-class AgregarColaborador : AppCompatActivity(), AdapterView.OnItemClickListener {
-    private lateinit var btnCancelar: Button
+class AgregarColaborador : AppCompatActivity(){
     private lateinit var btnGuardar: Button
+    private lateinit var btnCancelar: Button
 
     //LISTA COLABORADORES
-    private lateinit var listColaradoresLibres: ArrayList<vColaboradores>
+    private lateinit var listColaradoresLibres: ArrayList<vColaboradoresCompleto>
 
     //LIST VIEW
     private lateinit var listView: ListView
-    private lateinit var arrayAdapter: ArrayAdapter<vColaboradores>
+    private lateinit var arrayAdapter: ArrayAdapter<vColaboradoresCompleto>
 
     //
 
@@ -57,66 +50,32 @@ class AgregarColaborador : AppCompatActivity(), AdapterView.OnItemClickListener 
     //INITS
     private fun initComponents() {
         btnGuardar = findViewById(R.id.btnGuardar_ACANADIRCOLABORADOR)
+        btnCancelar = findViewById(R.id.btnCancelar_ACANADIRCOLABORADOR)
+        listView = findViewById(R.id.lvColaboradores_ACANADIRCOLABORADOR)
     }
 
     private fun initListeners() {
-        btnGuardar.setOnClickListener { guardarColaborador() }
+        btnGuardar.setOnClickListener {guardar()}
         btnCancelar.setOnClickListener {
-            GP_VariableGlobales.listaColaboradoresAnadidos.clear()
+            GP_VariableGlobales.AC_ArrayColaboradores.clear()
             finish()
         }
-        listView.setOnItemClickListener(this)
+    }
+
+    private fun guardar() {
+        val colaboradores = GP_VariableGlobales.AC_ArrayColaboradores
+        for (e in colaboradores){
+            GP_Procedures.update_reasignarColabadorAProyecto(e.cedula, GP_VariableGlobales.AC_Proyecto!!.id)
+        }
+        Toast.makeText(this, "Colaboradores añadidos", Toast.LENGTH_LONG).show()
+        finish()
     }
 
     //FUNCIONES
     private fun fun_cargarColaboradores() {
-        listColaradoresLibres = GP_Procedures.get_colaboradores_libres()
-        arrayAdapter = AdapterGP_AnadirColaborador(this, R.layout.__item_gp_anadir_colaborador, listColaradoresLibres)
+        listColaradoresLibres = GP_VariableGlobales.get_colaboradores_libres_completos()
+        println(listColaradoresLibres.size)
+        arrayAdapter = AdapterACAnadirColaborador(this, R.layout.__item_ac_anadir_colaborador, listColaradoresLibres)
         listView.adapter = arrayAdapter
-    }
-
-    private fun guardarColaborador() {
-        if (GP_VariableGlobales.listaColaboradoresAnadidos.isNotEmpty()) {
-            // Aquí puedes guardar los colaboradores seleccionados en tu base de datos
-            Toast.makeText(this, "Colaborador(es) guardado(s) correctamente", Toast.LENGTH_SHORT).show()
-            finish()
-        } else {
-            Toast.makeText(this, "No has seleccionado ningún colaborador", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun fun_selecionarItem(view: View?, position: Int) {
-        if (view != null) {
-
-            val cardView = view.findViewById<CardView>(R.id.i__cardView__GPANADIRCOLABORADOR)
-            val textViewPlus = view.findViewById<TextView>(R.id.i__textViewPlus__GPANADIRCOLABORADOR)
-            if (cardView.backgroundTintList == ColorStateList.valueOf(Color.parseColor("#002854"))) {  //Color Azul
-                cardView.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ADE46D")) //Color verde
-                textViewPlus.setText("-")
-
-                //Se añade el colaborador a los seleccionados
-                val item = arrayAdapter.getItem(position)!!
-                GP_VariableGlobales.listaColaboradoresAnadidos.add(item)
-            } else {
-                cardView.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#002854")) // Color Azul
-                textViewPlus.setText("+")
-
-                //Eliminamos el elemento
-                val item = arrayAdapter.getItem(position)!!
-                for (e in GP_VariableGlobales.listaColaboradoresAnadidos) {
-                    if (item.cedula.equals(e.cedula)) {
-                        GP_VariableGlobales.listaColaboradoresAnadidos.remove(e)
-                        break
-                    }
-                }
-            }
-        }
-    }
-
-    //LISTENER
-    @SuppressLint("ResourceType")
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this, position.toString(), Toast.LENGTH_SHORT).show()
-        fun_selecionarItem(view, position)
     }
 }

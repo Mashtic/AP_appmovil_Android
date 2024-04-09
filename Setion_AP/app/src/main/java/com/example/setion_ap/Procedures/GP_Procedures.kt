@@ -532,12 +532,12 @@ object GP_Procedures {
      * @param: Cedula del colaborador que será eliminado del proyecto.
      * @return:
      */
-    fun update_eliminarColabadorDeProyecto(cedula: Int) {
+    fun update_eliminarColabadorDeProyecto(cedula: String) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_EliminarColaboradorDeProyecto(?)}")
 
-            callStatement?.setInt(1, cedula)
+            callStatement?.setString(1, cedula)
             callStatement!!.execute()
         } catch (ex: SQLException) {
             println("Error: $ex")

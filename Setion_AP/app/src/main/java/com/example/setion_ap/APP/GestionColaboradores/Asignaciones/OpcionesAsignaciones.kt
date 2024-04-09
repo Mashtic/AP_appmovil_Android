@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.setion_ap.APP.GestionProyectos.Creacion_De_Proyectos.AgregarColaborador
 import com.example.setion_ap.R
 
 class OpcionesAsignaciones : AppCompatActivity() {
