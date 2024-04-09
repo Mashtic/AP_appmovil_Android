@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".APP.GestionProyectos.Creacion_De_Proyectos.GP_CreacionProyectos"
+    android:background="@color/screen_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frame_logo_GPCREACIONPROYECTOS"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/img_logoTec_GPCREACIONPROYECTOS"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logotec2"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                >
+
+            </ImageView>
+
+        </FrameLayout>
+
+        <!-- Campos existentes -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edNombre_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nombre"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edCedula_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Cedula"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edCorreo_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Correo"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edDepartamento_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Departamento"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edTelefono_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Telefono"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edEstado_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Estado (Libre o Trabajando)"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edNombreProyecto_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nombre del proyecto en el que trabaja (si aplica)"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Campos existentes -->
+
+        <!-- Agregar más campos según sea necesario -->
+
+        <!-- Repetir este patrón para los campos restantes -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            >
+
+            <Button
+                android:id="@+id/btnAnadirTarea_GPCREACIONPROYECTOS"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_gray"
+                android:text="Añadir tarea" />
+            <Button
+                android:id="@+id/btnHistorialDeCambios_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Historial de cambios"
+                android:backgroundTint="@color/btn_gray"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnGuardar_GPCREACIONPROYECTOS"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="@color/btn_blue"
+                android:text="Guardar" />
+            <Button
+                android:id="@+id/btnCancelar_GPCREACIONPROYECTOS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Cancelar"
+                android:backgroundTint="@color/btn_blue"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
