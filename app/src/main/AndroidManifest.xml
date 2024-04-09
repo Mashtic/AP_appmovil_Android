@@ -16,6 +16,21 @@
         android:theme="@style/Theme.Setion_AP"
         tools:targetApi="31">
         <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.GestionAsignaciones"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.EliminarColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.AgregarColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.OpcionesAsignaciones"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.AsignarProyecto"
+            android:exported="false" />
+        <activity
             android:name=".APP.GestionColaboradores.Modificaciones.ModificacionColaborador"
             android:exported="false" />
         <activity
