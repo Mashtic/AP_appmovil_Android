@@ -35,11 +35,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
-        <com.echo.holographlibrary.BarGraph
+        <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/grafica_BP"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_margin="16dp"/>
+            android:layout_margin="16dp"
+            />
 
         <Button
             android:id="@+id/btnAtras_BP"

@@ -744,7 +744,7 @@ object GP_Procedures {
      * @param: nombre del foro, descripcion, idProyecto: Int? (si es null, es foro general)
      * @return: update del colaborador
      */
-    fun set_insertarForo(nombre: String, descripcion:String, idProyecto: Int?) {
+    fun set_insertarForo(nombre: String, descripcion:String, idProyecto: Int?, contenido: String ,contex: Context) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_CrearForo(?,?,?)}")
@@ -759,12 +759,19 @@ object GP_Procedures {
             } else {
                 callStatement?.setNull(3, java.sql.Types.INTEGER)
             }
-
             callStatement?.execute()
+
+            val ultimoForo = get_foros().last()
+            
+            set_agregarMensajeEnForo(ultimoForo.idForo, "11111111", contenido, contex)
+
+
             println("Creado un nuevo foro.")
+            Toast.makeText(contex, "Foro registrado", Toast.LENGTH_SHORT).show()
 
         } catch (e: SQLException) {
             println("Error al crear el foro: ${e.message}")
+            Toast.makeText(contex, "Error de registro", Toast.LENGTH_SHORT).show()
         } finally {
             connectSql.dbConn()?.close()
 
@@ -775,7 +782,7 @@ object GP_Procedures {
      * @param: nombre del foro, descripcion, idProyecto: Int? (si es null, es foro general)
      * @return: update del colaborador
      */
-    fun set_agregarMensajeEnForo(foroId: Int, autor:String, contenido: String) {
+    fun set_agregarMensajeEnForo(foroId: Int, autor:String, contenido: String, contex: Context) {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_AgregarMensajeAForo(?,?,?)}")
@@ -787,8 +794,11 @@ object GP_Procedures {
             callStatement?.execute()
             println("Se ha creado el mensaje en el foro.")
 
+            Toast.makeText(contex, "Comentario registrado", Toast.LENGTH_SHORT).show()
+
         } catch (e: SQLException) {
             println("Error al crear el MENSAJE EN EL foro: ${e.message}")
+            Toast.makeText(contex, "Error de registro", Toast.LENGTH_SHORT).show()
         } finally {
             connectSql.dbConn()?.close()
 
@@ -883,6 +893,82 @@ object GP_Procedures {
         }
         println("Email sent SUCCESSFULLY!!!")
     }
+    /**
+     * @param:
+     * @return: Una lista de foros.
+     * asignado.
+     */
+    fun get_foros(): ArrayList<uForos> {
+        val partForos = ArrayList<uForos>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement = connectSql.dbConn()?.prepareStatement("SELECT foroId, nombre, descripcion, proyectoId FROM Foros")
+            val resultSet = statement?.executeQuery()
+
+            // Procesar los resultados
+            if (resultSet != null) {
+                while (resultSet.next()) {
+
+                    val foros = uForos(
+                        idForo = resultSet.getInt("foroId"),
+                        nombre = resultSet.getString("nombre"),
+                        descripcionForo = resultSet.getString("descripcion"),
+                        proyectoId = resultSet.getInt("foroId")
+                    )
+                    partForos.add(foros)
+                }
+            }
+        } catch (e1: SQLException) {
+            println("Error:::$e1")
+        } finally {
+            // Asegurarse de cerrar la conexión
+            try {
+                connectSql.dbConn()?.close()
+            } catch (e2: SQLException) {
+                // Manejo de error al cerrar conexión
+                println("Error:::$e2")
+            }
+        }
+        return partForos
+    }
+
+    fun get_foros_comentatios(): ArrayList<uForosComentarios> {
+        val partForos = ArrayList<uForosComentarios>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement = connectSql.dbConn()?.prepareStatement("SELECT foroId, mensajeId, autor, contenido FROM mensajesForo")
+            val resultSet = statement?.executeQuery()
+
+            // Procesar los resultados
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    val foros = uForosComentarios(
+                        foroId = resultSet.getInt("foroId"),
+                        mensajeId = resultSet.getInt("mensajeId"),
+                        autor = resultSet.getString("autor"),
+                        contenido = resultSet.getString("contenido"),
+                        fechaHora = null
+                    )
+                    partForos.add(foros)
+                }
+            }
+        } catch (e1: SQLException) {
+            println("Error:::$e1")
+        } finally {
+            // Asegurarse de cerrar la conexión
+            try {
+                connectSql.dbConn()?.close()
+            } catch (e2: SQLException) {
+                // Manejo de error al cerrar conexión
+                println("Error:::$e2")
+            }
+        }
+        return partForos
+    }
+
+
 
 
 }

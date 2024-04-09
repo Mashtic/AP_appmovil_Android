@@ -76,11 +76,12 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edCantidadIntegrantes_CF"
+                android:id="@+id/edDescripcionForo_CF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Cantidad de integrantes"
-                android:background="@drawable/style_border_edittext">
+                android:hint="Descripcion del foro"
+                android:background="@drawable/style_border_edittext"
+                android:maxLength="40">
             </EditText>
         </androidx.cardview.widget.CardView>
 
@@ -91,60 +92,34 @@
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
             <EditText
-                android:id="@+id/edCorreosElectronicos_CF"
+                android:id="@+id/edProyectoID_CF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Correos electrónicos"
+                android:hint="Proyecto"
+                android:inputType="number"
+                android:enabled="false"
                 android:background="@drawable/style_border_edittext">
             </EditText>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginTop="14dp"
             app:cardCornerRadius="12dp">
-            <TextView
-                android:id="@+id/edDepartamento_CF"
+            <EditText
+                android:id="@+id/edContenido_CF"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Departamento"
+                android:layout_height="wrap_content"
+                android:hint="Contenido"
                 android:textSize="18dp"
                 android:background="@drawable/style_border_edittext">
-            </TextView>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="14dp"
-            app:cardCornerRadius="12dp">
-            <EditText
-                android:id="@+id/edTelefonos_CF"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Teléfonos"
-                android:background="@drawable/style_border_edittext">
             </EditText>
+
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="14dp"
-            app:cardCornerRadius="12dp">
-            <EditText
-                android:id="@+id/edCodigo_CF"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Código"
-                android:background="@drawable/style_border_edittext">
-            </EditText>
-        </androidx.cardview.widget.CardView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,17 +131,19 @@
             >
 
             <Button
-                android:id="@+id/btnAceptar_CF"
-                android:layout_width="176dp"
+                android:id="@+id/btnGuardar_CF"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginEnd="6dp"
                 android:backgroundTint="@color/btn_blue"
-                android:text="Aceptar" />
+                android:text="Guardar" />
 
             <Button
                 android:id="@+id/btnCancelar_CF"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="Cancelar"
                 android:backgroundTint="@color/btn_blue"/>
         </LinearLayout>

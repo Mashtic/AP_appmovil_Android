@@ -155,3 +155,21 @@ data class uColaborador(
     val telefono: String,
     val departamento: Int
 )
+
+/**
+ * Clase para foros
+ */
+data class uForos(
+    val idForo: Int,
+    val nombre: String,
+    val descripcionForo: String,
+    val proyectoId: Int?
+)
+
+data class uForosComentarios(
+    val foroId: Int,
+    val mensajeId: Int,
+    val autor: String,
+    val contenido: String?,
+    val fechaHora: Date?
+)

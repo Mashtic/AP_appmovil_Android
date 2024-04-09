@@ -65,7 +65,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/btn_blue"
-            android:text="Creación de Foros">
+            android:text="Foros">
 
         </Button>
 
