@@ -8,6 +8,7 @@
 
     <color name="btn_gray">#797171</color>
     <color name="btn_gray_selected">#9A9393</color>
+    <color name="btn_red">#F44336</color>
 
     <color name="screen_background">#EDEDED</color>
     <color name="green">#ADE46D</color>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".APP.InicioRegistro.IN_InicioSesion">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_logo_IN1"
+        android:orientation="vertical"
+        tools:ignore="NotSibling">
+
+        <FrameLayout
+            android:id="@+id/frame_logo_IN1"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="30dp">
+
+            <ImageView
+                android:id="@+id/img_logoTec_IN1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logotec2"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                >
+
+            </ImageView>
+
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar sesión"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:id="@+id/edUsuario_IN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="14dp"
+            app:cardCornerRadius="12dp">
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/edContrasenna_IN1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Constraseña"
+                android:background="@drawable/style_border_edittext">
+            </EditText>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="15dp">
+
+        <Button
+            android:id="@+id/btnIngresar_IN1"
+            android:layout_width="176dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Ingresar" />
+
+        <Button
+            android:id="@+id/btnCancelar_IN1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/btn_blue"
+            android:text="Cancelar" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,6 +61,6 @@ Main_Evaluaciones : AppCompatActivity() {
         startActivity(intent)
     }
     private fun fun_atras() {
-        println("Hola")
+        finish()
     }
 }

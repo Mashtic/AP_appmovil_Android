@@ -173,3 +173,10 @@ data class uForosComentarios(
     val contenido: String?,
     val fechaHora: Date?
 )
+
+data class uUsuarios(
+    val nombre:String,
+    val cedula: String,
+    val email: String?,
+    val contrasenna: String?
+)

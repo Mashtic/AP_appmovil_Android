@@ -97,5 +97,6 @@ class Main_GestionProyectos : AppCompatActivity() {
     }
 
     private fun fun_atras() {
+        finish()
     }
 }

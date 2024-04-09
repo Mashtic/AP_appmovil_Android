@@ -8,6 +8,9 @@ class GP_VariableGlobales {
         var listaColaboradoresAnadidos: ArrayList<vColaboradores> = ArrayList()
         var listaTareasAnadidas: ArrayList<vProyectoTareas> = ArrayList()
 
+        var userNombre:String = ""
+        var userCedula:String = ""
+
         fun get_msjCorreoPorDefault(medio:String, fecha:String, hora:String, nivelImportancia:String):String{
             val msjCorreoPorDefault: String = "Buenas,\n" +
                     "Por este medio se les comparte la información con respecto a la próxima " +

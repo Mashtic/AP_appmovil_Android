@@ -1,7 +1,9 @@
 package com.example.setion_ap.Procedures
 
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
+import com.example.setion_ap.APP.PaginaPrincipal
 import com.example.setion_ap.VariableGlobales.GP_VariableGlobales
 import java.sql.Date
 import java.sql.PreparedStatement
@@ -679,7 +681,7 @@ object GP_Procedures {
      * @return: Agrega una tarea al proyecto
      */
     fun set_insertarColaborador(cedula: String, nombreCompl: String, email: String,
-                                departamento: Int, telefono: String, contras: String) {
+                                departamento: Int, telefono: String, contras: String, contex: Context):Boolean {
         try {
             val callStatement =
                 connectSql.dbConn()?.prepareCall("{CALL sp_InsertarColaborador(?, ?, ?, ?, ?, ?)}")
@@ -692,10 +694,14 @@ object GP_Procedures {
             callStatement?.setString(6, contras)
             callStatement!!.execute()
             println("Colab creado.")
+            Toast.makeText(contex, "Registrado", Toast.LENGTH_SHORT).show()
+            return true
 
         } catch (ex: SQLException) {
             println("Error: $ex")
+            Toast.makeText(contex, "Error", Toast.LENGTH_SHORT).show()
             //Toast.makeText(contex, ex.message.toString(), Toast.LENGTH_LONG).show()
+            return false
         }
     }
 
@@ -966,6 +972,40 @@ object GP_Procedures {
             }
         }
         return partForos
+    }
+
+    fun get_usuario(): ArrayList<uUsuarios> {
+        val partUsuarios = ArrayList<uUsuarios>()
+
+        try {
+            // Preparar la llamada al stored procedure
+            val statement = connectSql.dbConn()?.prepareStatement("SELECT nombreCompleto, cedula, email, contrasenna FROM Colaboradores")
+            val resultSet = statement?.executeQuery()
+
+            // Procesar los resultados
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    val usuarios = uUsuarios(
+                        nombre = resultSet.getString("nombreCompleto"),
+                        cedula = resultSet.getString("cedula"),
+                        email = resultSet.getString("email"),
+                        contrasenna = resultSet.getString("contrasenna"),
+                    )
+                    partUsuarios.add(usuarios)
+                }
+            }
+        } catch (e1: SQLException) {
+            println("Error:::$e1")
+        } finally {
+            // Asegurarse de cerrar la conexión
+            try {
+                connectSql.dbConn()?.close()
+            } catch (e2: SQLException) {
+                // Manejo de error al cerrar conexión
+                println("Error:::$e2")
+            }
+        }
+        return partUsuarios
     }
 
 
