@@ -36,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical">
 
-        <com.echo.holographlibrary.BarGraph
+        <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/grafica_IP"
             android:layout_width="match_parent"
             android:layout_height="400dp"

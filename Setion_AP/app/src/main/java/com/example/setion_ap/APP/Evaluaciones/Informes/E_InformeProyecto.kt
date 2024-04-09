@@ -9,11 +9,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.echo.holographlibrary.Bar
-import com.echo.holographlibrary.BarGraph
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.Procedures.vProyectoTareas
 import com.example.setion_ap.R
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 
 class E_InformeProyecto : AppCompatActivity() {
     private lateinit var btnAtras:Button
@@ -57,14 +59,9 @@ class E_InformeProyecto : AppCompatActivity() {
 
 
     private fun fun_graficarBarras(lTareas:ArrayList<vProyectoTareas>){
-        var cantPH =0
-        var cantP= 0
-        var cantF=0
-        val barra1= Bar()
-        val barra2= Bar()
-        val barra3= Bar()
-        val puntos= ArrayList<Bar>()
-
+        var cantPH =0.0
+        var cantP= 0.0
+        var cantF=0.0
         for (e in lTareas){
             if (e.nombEstadoTarea.equals("Por hacer"))
             {
@@ -75,20 +72,34 @@ class E_InformeProyecto : AppCompatActivity() {
                 cantF=cantF+1
             }
         }
-        barra1.color = Color.parseColor("#02AC66")
-        barra1.name = "Por hacer"
-        barra1.value = cantPH.toFloat()
-        puntos.add(barra1)
-        barra2.color = Color.parseColor("#02AC66")
-        barra2.name = "En progreso"
-        barra2.value = cantP.toFloat()
-        puntos.add(barra2)
-        barra3.color = Color.parseColor("#02AC66")
-        barra3.name = "Finalizado"
-        barra3.value = cantF.toFloat()
-        puntos.add(barra3)
+        val listaDatosPH:ArrayList<BarEntry> = ArrayList()
+        val listaDatosP:ArrayList<BarEntry> = ArrayList()
+        val listaDatosF:ArrayList<BarEntry> = ArrayList()
+        listaDatosPH.add(BarEntry(1f,cantPH.toFloat()))
+        listaDatosP.add(BarEntry(2f,cantP.toFloat()))
+        listaDatosF.add(BarEntry(3f,cantF.toFloat()))
 
-        val grafica = findViewById<View>(R.id.grafica_IP) as BarGraph
-        grafica.bars= puntos
+        val barDataSetPH = BarDataSet(listaDatosPH,"Por Hacer")
+        val barDataSetP = BarDataSet(listaDatosP,"En progreso")
+        val barDataSetF = BarDataSet(listaDatosF,"Finalizado")
+
+        barDataSetPH.setColors(Color.parseColor("#EF280F"))
+        barDataSetPH.valueTextColor=Color.BLACK
+
+        barDataSetP.setColors(Color.parseColor("#02AC66"))
+        barDataSetP.valueTextColor=Color.BLACK
+
+        barDataSetF.setColors(Color.parseColor("#E36B2C"))
+        barDataSetF.valueTextColor=Color.BLACK
+
+        val barDataPH =BarData(barDataSetPH)
+        val barDataP =BarData(barDataSetP)
+        val barDataF =BarData(barDataSetF)
+        val grafica = findViewById<View>(R.id.grafica_IP) as BarChart
+        grafica.data=barDataPH
+        grafica.data.addDataSet(barDataSetP)
+        grafica.data.addDataSet(barDataSetF)
+
+        grafica.animateY(2000)
     }
 }

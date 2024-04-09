@@ -9,14 +9,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.echo.holographlibrary.Line
-import com.echo.holographlibrary.LineGraph
-import com.echo.holographlibrary.LinePoint
 import com.example.setion_ap.Procedures.GP_Procedures
 import com.example.setion_ap.Procedures.vProyectoTareas
 import com.example.setion_ap.R
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.DataSet
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlin.random.Random
-
 
 class E_BC_Proyecto : AppCompatActivity() {
     //LISTA DE TAREAS
@@ -63,36 +66,45 @@ class E_BC_Proyecto : AppCompatActivity() {
 
     private fun fun_graficarLineas(lTareas: ArrayList<vProyectoTareas>) {
 
-        val lineaReal = Line()
+        val grafica3 = findViewById<View>(R.id.grafica_BP) as LineChart
         var tiempoProyecto = Random.nextInt(13, 30)
         var cantStories = 0
         var tiempoF = 0
-        var lineaIdeal = Line()
-        val p = LinePoint()
-        val grafica = findViewById<View>(R.id.grafica_BP) as LineGraph
+        var arrayLineaIdeal= ArrayList<Entry>()
+        var arrayLineaReal=ArrayList<Entry>()
+
         for (e in lTareas) {
             cantStories = cantStories + e.storyPoint
         }
-        lineaIdeal.addPoint(LinePoint(0.0, cantStories.toDouble()))
-        lineaIdeal.addPoint(LinePoint(tiempoProyecto.toDouble(), 0.0))
-        lineaIdeal.color = Color.parseColor("#024A86")
+        arrayLineaIdeal.add(Entry(0f, cantStories.toFloat()))
+        arrayLineaIdeal.add(Entry(tiempoProyecto.toFloat(),0f))
 
+        val lineaIdeal =LineDataSet(arrayLineaIdeal,"Estimado")
+        lineaIdeal.lineWidth= 3F
+
+
+
+        arrayLineaReal.add(Entry(0f, cantStories.toFloat()))
+        var lTiempo=0
         for (tareaF in lTareas) {
-            if (tareaF.nombEstadoTarea.equals("Finalizado")) {
-                tiempoF = Random.nextInt(1, tiempoProyecto)
-                lineaReal.addPoint(
-                    LinePoint(
-                        tiempoF.toDouble(),
-                        cantStories.toDouble()
-                    )
-                )
+            if (tareaF.nombEstadoTarea.equals("Por hacer"))
+            {
+
+            }else if(tareaF.nombEstadoTarea.equals("En progreso")){
+
+            }else{
+                tiempoF = Random.nextInt(1, tiempoProyecto-1)
+                lTiempo=lTiempo+tiempoF
+                arrayLineaReal.add(Entry(lTiempo.toFloat(),cantStories.toFloat()))
                 cantStories = cantStories - tareaF.storyPoint
                 tiempoProyecto = tiempoProyecto - tiempoF
-
             }
         }
-        lineaReal.color = Color.parseColor("#6DC36D")
-        grafica.addLine(lineaIdeal)
-        grafica.addLine(lineaReal)
+        val lineaReal = LineDataSet(arrayLineaReal, "Real")
+        lineaReal.lineWidth=3f
+        lineaReal.setColors(Color.RED)
+        val lineIdealData = LineData(listOf( lineaIdeal,lineaReal))
+        grafica3.data=lineIdealData
+        grafica3.invalidate()
     }
 }

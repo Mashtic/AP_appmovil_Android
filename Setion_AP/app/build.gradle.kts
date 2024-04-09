@@ -50,7 +50,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(files("libs\\jtds-1.3.1.jar"))
     // https://mvnrepository.com/artifact/org.quanqi/android-holo-graph
-    implementation("org.quanqi:android-holo-graph:0.1.0")
+    //implementation("org.quanqi:android-holo-graph:0.1.0")
+    //implementation ("com.jjoe64:graphview:4.2.2")
+    //implementation("com.diogobernardino:williamchart:3.10.1")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
