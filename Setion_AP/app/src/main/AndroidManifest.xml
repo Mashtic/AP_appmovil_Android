@@ -16,6 +16,39 @@
         android:theme="@style/Theme.Setion_AP"
         tools:targetApi="31">
         <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.GestionAsignaciones"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.EliminarColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.AgregarColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.OpcionesAsignaciones"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Asignaciones.AsignarProyecto"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Modificaciones.ModificacionColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Modificaciones.ModificacionInfo"
+            android:exported="false" />
+        <activity
+            android:name=".APP.GestionColaboradores.Registro.RegistroColaborador"
+            android:exported="false" />
+        <activity
+            android:name=".APP.Main_GestionColaboradores"
+            android:exported="false" />
+        <activity
+            android:name=".APP.PaginaPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".APP.InicioRegistro.Inicio"
+            android:exported="false" />
+        <activity
             android:name=".APP.Evaluaciones.Foros.E_F_ForoPrivado"
             android:exported="false" />
         <activity
@@ -23,9 +56,6 @@
             android:exported="false" />
         <activity
             android:name=".APP.Evaluaciones.Informes.E_InformeProyecto"
-            android:exported="false" />
-        <activity
-            android:name=".APP.Evaluaciones.Foros.E_F_UsarForo_p2"
             android:exported="false" />
         <activity
             android:name=".APP.Evaluaciones.Foros.E_F_CrearForo"
